@@ -1,0 +1,24 @@
+using EasyTools.Framework.UI;
+
+namespace EasyTools.UI.WPF.EasyConnect.Module.Views
+{
+    /// <summary>
+    /// Interaction logic for SECUserView.xaml
+    /// </summary>
+    public partial class CONIntegratorConfigurationView : BaseUserControl
+    {
+        protected CONIntegratorConfigurationView view;
+
+        private void FormFieldCheckBox_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            
+        }
+
+        private void FormButton_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+
+    }
+}

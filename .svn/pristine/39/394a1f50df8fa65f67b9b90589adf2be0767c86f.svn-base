@@ -1,0 +1,80 @@
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+
+namespace EasyTools.Infrastructure.Repositories.Base
+{
+
+    public class BaseSECCompanyRepository : BaseRepository<SECCompany>
+    {
+
+        public BaseSECCompanyRepository(IUnitOfWork context) : base(context)
+        {
+        }
+
+        public override void AddMoreDetailFindById(SECCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<SECCompany> FindAll(SECCompany data, Options option)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override SECCompany FindById(SECCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override String GetQuery(SECCompany data, Boolean byId)
+        {
+            String dml = "Select a from SECCompany as a where 1=1 ";
+            if (byId)
+            {
+                if (data.Id != 0)
+                    dml += "             AND a.Id = :Id \n";
+            }
+            else
+            {
+                if (data.Id != 0)
+                    dml += "             AND a.Id = :Id \n";
+                if (!String.IsNullOrWhiteSpace(data.IdentificationNumer))
+                    dml += "             AND upper(a.IdentificationNumer) like :IdentificationNumer \n";
+                if (!String.IsNullOrWhiteSpace(data.TradeName))
+                    dml += "             AND upper(a.TradeName) like :TradeName \n";
+
+            }
+            return dml;
+        }
+
+        public override void SaveOrUpdateDetails(SECCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetQueryParameters(IQuery query, SECCompany data, Boolean byId)
+        {
+            if (byId)
+            {
+                if (data.Id != 0)
+                    query.SetInt32("Id", data.Id);
+            }
+            else
+            {
+                if (data.Id != 0)
+                    query.SetInt32("Id", data.Id);
+                if (!String.IsNullOrWhiteSpace(data.IdentificationNumer))
+                    query.SetString("IdentificationNumer", "%" + data.IdentificationNumer.ToUpper() + "%");
+                if (!String.IsNullOrWhiteSpace(data.TradeName))
+                    query.SetString("TradeName", "%" + data.TradeName.ToUpper() + "%");
+            }
+        }
+
+    }
+}

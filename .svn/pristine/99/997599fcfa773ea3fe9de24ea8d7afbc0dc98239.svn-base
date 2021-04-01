@@ -1,0 +1,103 @@
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using EasyTools.Infrastructure.Repositories.Base;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+
+namespace EasyTools.Infrastructure.Repositories
+{
+
+    public class CONSQLRepository : BaseCONSQLRepository
+    {
+
+        public CONSQLRepository(IUnitOfWork context)
+            : base(context)
+        {
+        }
+
+        public override String GetQuery(CONSQL data, Boolean byId)
+        {
+            String dml = base.GetQuery(data, byId);
+            if (byId)
+            {
+                //add more parameters to method for query by id
+            }
+            else
+            {
+                //Determine if the boolean values ​​are taken included as part of the consultation
+
+                //dml += "             AND a.Automatic = :Automatic \n" ;
+                //dml += "             AND a.GenerateFile = :GenerateFile \n" ;
+
+                //add more parameters to method for query by any field
+
+                if (data.Company != null && data.Company.Id != 0)
+                    dml += "             AND a.Company.Id = :Company \n";
+                //if (data.MainSQL != null && data.MainSQL.Id != 0)
+                //    dml += "             AND a.MainSQL.Id = :MainSQL \n";
+                //if (data.MainSQL == null)
+                //    dml += "             AND a.MainSQL is null \n";
+                if (data.MainSQLId == null)
+                {
+                    dml += "             AND a.MainSQLId is null \n";
+                    dml += "             AND a.Active = :Active \n";
+                }
+                else
+                    dml += "             AND a.MainSQLId is not null \n";
+                if (data.Structure != null && data.Structure.Id != 0)
+                    dml += "             AND a.Structure.Id = :Structure \n";
+
+                dml += " order by a.Id asc ";
+            }
+            return dml;
+        }
+
+        public override void SetQueryParameters(IQuery query, CONSQL data, Boolean byId)
+        {
+            base.SetQueryParameters(query, data, byId);
+            if (byId)
+            {
+                //add more parameters to method for query by id
+            }
+            else
+            {
+                //Determine if the boolean values ​​are taken included as part of the consultation
+                if (data.MainSQLId == null)
+                    query.SetBoolean("Active", data.Active);
+                //query.SetBoolean("Automatic",  data.Automatic);
+                //query.SetBoolean("GenerateFile",  data.GenerateFile);
+
+                //add more parameters to method for query by any field
+
+                if (data.Company != null && data.Company.Id != 0)
+                    query.SetInt32("Company", data.Company.Id);
+                //if (data.MainSQL != null && data.MainSQL.Id != 0)
+                //    query.SetInt32("MainSQL", data.MainSQL.Id);
+                if (data.Structure != null && data.Structure.Id != 0)
+                    query.SetInt32("Structure", data.Structure.Id);
+            }
+        }
+
+        public override void SaveOrUpdateDetails(CONSQL data)
+        {
+            base.SaveOrUpdateDetails(data);
+        }
+
+        public override void AddMoreDetailFindById(CONSQL data)
+        {
+        }
+
+        public override CONSQL FindById(CONSQL data)
+        {
+            return base.FindById(data);
+        }
+
+        public override List<CONSQL> FindAll(CONSQL data, Options option)
+        {
+            return base.FindAll(data, option);
+        }
+
+    }
+}

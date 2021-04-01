@@ -1,0 +1,81 @@
+﻿using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using EasyTools.UI.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EasyTools.UI.Schedule
+{
+    public class Program
+    {
+        public static DatabaseSetting conf;
+
+        public static void Main(string[] args)
+        {
+            //if (args == null)
+                args = new string[] { "Pruebas", "F" };
+                
+                
+
+                try
+                {
+                    if (args != null && args.Length > 0)
+                    {
+                        foreach (DatabaseSetting item in EasyApp.Current.Configuration.DataBaseSettings)
+                        {
+                            if (args[0].ToString() == item.Name)
+
+                                conf = item;
+                            else
+                                conf = null;
+
+                        }
+                        if (conf == null)
+                            throw new Exception("No se pudo recuperar una conexion de la base de datos");
+                        if (args[1] == "F")
+                        {
+                            ReadFileOpera(conf);
+                        }
+                    }
+
+
+
+                }
+                catch (Exception e)
+                {
+                    string error = "";
+                    while (e != null)
+                    {
+                        error += e.Message + " \n";
+                        e = e.InnerException;
+                    }
+                    Console.WriteLine(error);
+                }
+            }
+
+        //lee el archivo de opera y lo guarda en las tablas del EasyConnect
+
+        public static void ReadFileOpera(DatabaseSetting conf)
+        {
+
+            
+            try
+            {
+
+                var opera = (EXTFileOpera)EasyApp.Current.eToolsServer().Execute(new EXTFileOpera(),Actions.Process, Options.All,conf.Name,"");
+                Console.WriteLine("Archivo de Opera Leido y  Guardado Correctamente");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al intentar guardar Archivo Opera " + e.Message);
+            }
+        }
+
+    }
+}
+

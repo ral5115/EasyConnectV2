@@ -1,0 +1,35 @@
+using EasyTools.Framework.UI;
+using System;
+
+namespace EasyTools.UI.WPF.EasyConnect.Module.Views
+{
+    /// <summary>
+    /// Interaction logic for SECUserView.xaml
+    /// </summary>
+    public partial class CONSQLParameterView : BaseUserControl
+    {
+
+        private void IsDateChecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Model.IsInt = false;
+            Model.IsString = false;
+        }
+
+        private void IsIntChecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Model.IsDate = false;
+            Model.IsString = false;
+        }
+
+        private void IsStringChecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Model.IsDate = false;
+            Model.IsInt = false;
+        }
+
+        private void FormFieldComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Model.DefaultDateValue = Model.SelectedDefaultDateValue.Int32Value;
+        }
+    }
+}

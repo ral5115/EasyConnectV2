@@ -1,0 +1,52 @@
+﻿using EasyTools.Framework.Persistance;
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+namespace EasyTools.Framework.Application
+{
+    public class Configuration2
+    {
+        private Dictionary<string,string> appSettings;
+
+        [XmlElement("Dictionary")]
+        public Dictionary<string, string> AppSettings
+        {
+            get
+            {
+                if (appSettings == null)
+                    appSettings = new Dictionary<string, string>();
+                return appSettings;
+            }
+            set
+            {
+                appSettings = value;
+            }
+        }
+
+        private List<DatabaseSetting> dataBaseSettings;
+
+        public List<DatabaseSetting> DataBaseSettings
+        {
+            get
+            {
+                if (dataBaseSettings == null)
+                    dataBaseSettings = new List<DatabaseSetting>();
+                return dataBaseSettings;
+            }
+            set
+            {
+                dataBaseSettings = value;
+            }
+        }
+
+        public DatabaseSetting GetDatabaseSetting(string settingName)
+        {
+            DatabaseSetting setting = DataBaseSettings.Find(x => x.Name == settingName);
+            if (setting == null)
+                throw new ArgumentException("La configuración " + settingName + " no existe");
+            return setting;
+        }
+    }
+}

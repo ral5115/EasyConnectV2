@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace EasyTools.Framework.Data
+{
+    public interface IEntity<T> where T : FrameworkEntity
+    {
+        String Entity { get; set; }
+
+        String Value { get; set; }
+
+        Int64? MainEntityId { get; set; }
+
+        T MainEntity { get; set; }
+
+        List<T> Entities { get; set; }
+
+        List<T> ChildEntities { get; set; }
+
+    }
+}

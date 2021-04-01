@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23ADF362-9B2E-4A8B-AC48-0F702614056E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyTools.Domains</RootNamespace>
+    <AssemblyName>EasyTools.Domains</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseCONEquivalenceDetailBLL.cs" />
+    <Compile Include="Base\BaseCONEquivalenceBLL.cs" />
+    <Compile Include="Base\BaseCONErrorBLL.cs" />
+    <Compile Include="Base\BaseCONIntegratorConfigurationBLL.cs" />
+    <Compile Include="Base\BaseCONIntegratorBLL.cs" />
+    <Compile Include="Base\BaseCONRecordDetailBLL.cs" />
+    <Compile Include="Base\BaseCONRecordBLL.cs" />
+    <Compile Include="Base\BaseCONSQLDetailBLL.cs" />
+    <Compile Include="Base\BaseCONSQLBLL.cs" />
+    <Compile Include="Base\BaseCONSQLParameterBLL.cs" />
+    <Compile Include="Base\BaseCONSQLSendBLL.cs" />
+    <Compile Include="Base\BaseCONStructureAssociationBLL.cs" />
+    <Compile Include="Base\BaseCONStructureDetailBLL.cs" />
+    <Compile Include="Base\BaseCONStructureBLL.cs" />
+    <Compile Include="Base\BaseEXTFileOperaDetailBLL.cs" />
+    <Compile Include="Base\BaseEXTFileOperaBLL.cs" />
+    <Compile Include="Base\BaseSECCompanyBLL.cs" />
+    <Compile Include="Base\BaseSECConnectionBLL.cs" />
+    <Compile Include="Base\BaseSECRoleBLL.cs" />
+    <Compile Include="Base\BaseSECRolePermissionBLL.cs" />
+    <Compile Include="Base\BaseSECUserCompanyBLL.cs" />
+    <Compile Include="Base\BaseSECUserBLL.cs" />
+    <Compile Include="CONEquivalenceDetailBLL.cs" />
+    <Compile Include="CONEquivalenceBLL.cs" />
+    <Compile Include="CONErrorBLL.cs" />
+    <Compile Include="CONIntegratorConfigurationBLL.cs" />
+    <Compile Include="CONIntegratorBLL.cs" />
+    <Compile Include="CONRecordDetailBLL.cs" />
+    <Compile Include="CONRecordBLL.cs" />
+    <Compile Include="CONSQLDetailBLL.cs" />
+    <Compile Include="CONSQLBLL.cs" />
+    <Compile Include="CONSQLParameterBLL.cs" />
+    <Compile Include="CONSQLSendBLL.cs" />
+    <Compile Include="CONStructureAssociationBLL.cs" />
+    <Compile Include="CONStructureDetailBLL.cs" />
+    <Compile Include="CONStructureBLL.cs" />
+    <Compile Include="DomainLogic.cs" />
+    <Compile Include="EXTFileOperaDetailBLL.cs" />
+    <Compile Include="EXTFileOperaBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SECCompanyBLL.cs" />
+    <Compile Include="SECConnectionBLL.cs" />
+    <Compile Include="SECRoleBLL.cs" />
+    <Compile Include="SECRolePermissionBLL.cs" />
+    <Compile Include="SECUserCompanyBLL.cs" />
+    <Compile Include="SECUserBLL.cs" />
+    <Compile Include="UtilBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyTools.Framework.WPF\EasyTools.Framework.WPF.csproj">
+      <Project>{969ef6c5-f519-49d1-81df-3485b8d1db57}</Project>
+      <Name>EasyTools.Framework.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyTools.Framework\EasyTools.Framework.csproj">
+      <Project>{4c075dac-24c9-4b1a-8f05-b7e298df863a}</Project>
+      <Name>EasyTools.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyTools.Infrastructure\EasyTools.Infrastructure.csproj">
+      <Project>{b0a8e7bf-0b81-442a-a017-f1c1559793e5}</Project>
+      <Name>EasyTools.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

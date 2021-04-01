@@ -1,0 +1,25 @@
+delete CONErrors
+delete CONRecordDetails
+delete CONRecords
+delete CONSQLParameters
+delete CONSQLDetails
+delete CONSQLSends
+delete CONSQLs
+delete CONEquivalenceDetails
+delete CONEquivalences
+
+
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONErrors'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONRecordDetails'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONRecords'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONSQLParameters'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONSQLDetails'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONSQLSends'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONSQLs'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONEquivalenceDetails'
+update SECSecuences set NextValue = 0 where SecuenceId = 'CONEquivalences'
+
+--update SECSecuences set NextValue = 0 where SecuenceId = 'SECRolePermissions'
+
+delete SECSecuences where SecuenceId = 'SECLanguageResources'
+delete SECSecuences where SecuenceId = 'SECLanguages'

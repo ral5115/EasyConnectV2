@@ -1,0 +1,25 @@
+﻿using EasyTools.Framework.Data;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+
+namespace EasyTools.Framework.Persistance
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        void Commit();
+
+        void Rollback();
+
+        void BeginTransaction();
+
+        BaseRepository<T> Repository<T>() where T : FrameworkEntity;
+
+        DatabaseSetting Settings { get; }
+
+        ISession Session { get; }
+
+        Boolean IsTransactional { get; set; }
+
+    }
+}

@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2358D11C-1193-4157-B5C1-74F3F025DBB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyTools.Infrastructure</RootNamespace>
+    <AssemblyName>EasyTools.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Base\BaseCONEquivalence.cs" />
+    <Compile Include="Entities\Base\BaseCONEquivalenceDetail.cs" />
+    <Compile Include="Entities\Base\BaseCONError.cs" />
+    <Compile Include="Entities\Base\BaseCONIntegrator.cs" />
+    <Compile Include="Entities\Base\BaseCONIntegratorConfiguration.cs" />
+    <Compile Include="Entities\Base\BaseCONRecord.cs" />
+    <Compile Include="Entities\Base\BaseCONRecordDetail.cs" />
+    <Compile Include="Entities\Base\BaseCONSQL.cs" />
+    <Compile Include="Entities\Base\BaseCONSQLDetail.cs" />
+    <Compile Include="Entities\Base\BaseCONSQLParameter.cs" />
+    <Compile Include="Entities\Base\BaseCONSQLSend.cs" />
+    <Compile Include="Entities\Base\BaseCONStructure.cs" />
+    <Compile Include="Entities\Base\BaseCONStructureAssociation.cs" />
+    <Compile Include="Entities\Base\BaseCONStructureDetail.cs" />
+    <Compile Include="Entities\Base\BaseEntity.cs" />
+    <Compile Include="Entities\Base\BaseEXTFileOpera.cs" />
+    <Compile Include="Entities\Base\BaseEXTFileOperaDetail.cs" />
+    <Compile Include="Entities\Base\BaseSECCompany.cs" />
+    <Compile Include="Entities\Base\BaseSECConnection.cs" />
+    <Compile Include="Entities\Base\BaseSECLanguage.cs" />
+    <Compile Include="Entities\Base\BaseSECLanguageResource.cs" />
+    <Compile Include="Entities\Base\BaseSECMenu.cs" />
+    <Compile Include="Entities\Base\BaseSECRol.cs" />
+    <Compile Include="Entities\Base\BaseSECRole.cs" />
+    <Compile Include="Entities\Base\BaseSECRolePermission.cs" />
+    <Compile Include="Entities\Base\BaseSECUser.cs" />
+    <Compile Include="Entities\Base\BaseSECUserCompany.cs" />
+    <Compile Include="Entities\CONEquivalence.cs" />
+    <Compile Include="Entities\CONEquivalenceDetail.cs" />
+    <Compile Include="Entities\CONError.cs" />
+    <Compile Include="Entities\CONFinal.cs" />
+    <Compile Include="Entities\CONInitial.cs" />
+    <Compile Include="Entities\CONIntegrator.cs" />
+    <Compile Include="Entities\CONIntegratorConfiguration.cs" />
+    <Compile Include="Entities\CONRecord.cs" />
+    <Compile Include="Entities\CONRecordDetail.cs" />
+    <Compile Include="Entities\CONSQL.cs" />
+    <Compile Include="Entities\CONSQLDetail.cs" />
+    <Compile Include="Entities\CONSQLParameter.cs" />
+    <Compile Include="Entities\CONSQLSend.cs" />
+    <Compile Include="Entities\CONStructure.cs" />
+    <Compile Include="Entities\CONStructureAssociation.cs" />
+    <Compile Include="Entities\CONStructureDetail.cs" />
+    <Compile Include="Entities\EXTFileOpera.cs" />
+    <Compile Include="Entities\EXTFileOperaDetail.cs" />
+    <Compile Include="Entities\SECCompany.cs" />
+    <Compile Include="Entities\SECConnection.cs" />
+    <Compile Include="Entities\SECRole.cs" />
+    <Compile Include="Entities\SECRolePermission.cs" />
+    <Compile Include="Entities\SECUser.cs" />
+    <Compile Include="Entities\SECUserCompany.cs" />
+    <Compile Include="Entities\T667ImpConectorControl.cs" />
+    <Compile Include="Entities\T668ImpConectorDetalle.cs" />
+    <Compile Include="Mappings\Base\BaseCONEquivalenceDetailMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONEquivalenceMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONErrorMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONIntegratorConfigurationMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONIntegratorMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONRecordDetailMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONRecordMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONSQLDetailMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONSQLMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONSQLParameterMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONSQLSendMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONStructureAssociationMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONStructureDetailMap.cs" />
+    <Compile Include="Mappings\Base\BaseCONStructureMap.cs" />
+    <Compile Include="Mappings\Base\BaseEXTFileOperaDetailMap.cs" />
+    <Compile Include="Mappings\Base\BaseEXTFileOperaMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECCompanyMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECConnectionMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECRoleMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECRolePermissionMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECUserCompanyMap.cs" />
+    <Compile Include="Mappings\Base\BaseSECUserMap.cs" />
+    <Compile Include="Mappings\CONEquivalenceDetailMap.cs" />
+    <Compile Include="Mappings\CONEquivalenceMap.cs" />
+    <Compile Include="Mappings\CONErrorMap.cs" />
+    <Compile Include="Mappings\CONIntegratorConfigurationMap.cs" />
+    <Compile Include="Mappings\CONIntegratorMap.cs" />
+    <Compile Include="Mappings\CONRecordDetailMap.cs" />
+    <Compile Include="Mappings\CONRecordMap.cs" />
+    <Compile Include="Mappings\CONSQLDetailMap.cs" />
+    <Compile Include="Mappings\CONSQLMap.cs" />
+    <Compile Include="Mappings\CONSQLParameterMap.cs" />
+    <Compile Include="Mappings\CONSQLSendMap.cs" />
+    <Compile Include="Mappings\CONStructureAssociationMap.cs" />
+    <Compile Include="Mappings\CONStructureDetailMap.cs" />
+    <Compile Include="Mappings\CONStructureMap.cs" />
+    <Compile Include="Mappings\EXTFileOperaDetailMap.cs" />
+    <Compile Include="Mappings\EXTFileOperaMap.cs" />
+    <Compile Include="Mappings\SECCompanyMap.cs" />
+    <Compile Include="Mappings\SECConnectionMap.cs" />
+    <Compile Include="Mappings\SECRoleMap.cs" />
+    <Compile Include="Mappings\SECRolePermissionMap.cs" />
+    <Compile Include="Mappings\SECUserCompanyMap.cs" />
+    <Compile Include="Mappings\SECUserMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Base\BaseCONEquivalenceDetailRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONEquivalenceRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONErrorRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONIntegratorConfigurationRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONIntegratorRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONRecordDetailRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONRecordRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONSQLDetailRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONSQLParameterRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONSQLRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONSQLSendRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONStructureAssociationRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONStructureDetailRepository.cs" />
+    <Compile Include="Repositories\Base\BaseCONStructureRepository.cs" />
+    <Compile Include="Repositories\Base\BaseEXTFileOperaDetailRepository.cs" />
+    <Compile Include="Repositories\Base\BaseEXTFileOperaRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECCompanyRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECConnectionRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECRolePermissionRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECRoleRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECUserCompanyRepository.cs" />
+    <Compile Include="Repositories\Base\BaseSECUserRepository.cs" />
+    <Compile Include="Repositories\CONEquivalenceDetailRepository.cs" />
+    <Compile Include="Repositories\CONEquivalenceRepository.cs" />
+    <Compile Include="Repositories\CONErrorRepository.cs" />
+    <Compile Include="Repositories\CONIntegratorConfigurationRepository.cs" />
+    <Compile Include="Repositories\CONIntegratorRepository.cs" />
+    <Compile Include="Repositories\CONRecordDetailRepository.cs" />
+    <Compile Include="Repositories\CONRecordRepository.cs" />
+    <Compile Include="Repositories\CONSQLDetailRepository.cs" />
+    <Compile Include="Repositories\CONSQLParameterRepository.cs" />
+    <Compile Include="Repositories\CONSQLRepository.cs" />
+    <Compile Include="Repositories\CONSQLSendRepository.cs" />
+    <Compile Include="Repositories\CONStructureAssociationRepository.cs" />
+    <Compile Include="Repositories\CONStructureDetailRepository.cs" />
+    <Compile Include="Repositories\CONStructureRepository.cs" />
+    <Compile Include="Repositories\EXTFileOperaDetailRepository.cs" />
+    <Compile Include="Repositories\EXTFileOperaRepository.cs" />
+    <Compile Include="Repositories\SECCompanyRepository.cs" />
+    <Compile Include="Repositories\SECConnectionRepository.cs" />
+    <Compile Include="Repositories\SECRolePermissionRepository.cs" />
+    <Compile Include="Repositories\SECRoleRepository.cs" />
+    <Compile Include="Repositories\SECUserCompanyRepository.cs" />
+    <Compile Include="Repositories\SECUserRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyTools.Framework\EasyTools.Framework.csproj">
+      <Project>{4c075dac-24c9-4b1a-8f05-b7e298df863a}</Project>
+      <Name>EasyTools.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

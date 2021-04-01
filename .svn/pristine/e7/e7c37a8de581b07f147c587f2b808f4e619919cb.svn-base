@@ -1,0 +1,16 @@
+﻿<Application x:Class="EasyTools.UI.WPF.App"
+             xmlns:Resources="clr-namespace:EasyTools.Framework.Resources;assembly=EasyTools.Framework.WPF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/EasyTools.Framework.WPF;component/Themes/DarkBlue.xaml"/>
+                <!--<ResourceDictionary Source="/EasyTools.Framework.WPF;component/Themes/DarkGray.xaml"/>
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Windows8;component/Themes/Telerik.Windows.Controls.xaml"/>
+                <ResourceDictionary Source="/Telerik.Windows.Themes.Windows8;component/Themes/Telerik.Windows.Controls.Navigation.xaml"/>-->
+            </ResourceDictionary.MergedDictionaries>
+            <Resources:Languages x:Key="languages"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

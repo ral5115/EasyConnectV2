@@ -1,0 +1,125 @@
+﻿using EasyTools.Framework.Persistance;
+
+namespace EasyTools.Domains
+{
+    public class DomainLogic
+    {
+        private DatabaseSetting settings;
+
+        public DomainLogic(DatabaseSetting settings)
+        {
+            this.settings = settings;
+        }
+
+        public EXTFileOperaBLL GetEXTFileOperaDL()
+        {
+            return new EXTFileOperaBLL(settings);
+        }
+        public EXTFileOperaDetailBLL GetEXTFileOperaDetailDL()
+        {
+            return new EXTFileOperaDetailBLL(settings);
+        }
+
+        public CONEquivalenceDetailBLL GetCONEquivalenceDetailDL()
+        {
+            return new CONEquivalenceDetailBLL(settings);
+        }
+
+        public CONEquivalenceBLL GetCONEquivalenceDL()
+        {
+            return new CONEquivalenceBLL(settings);
+        }
+
+        public CONErrorBLL GetCONErrorDL()
+        {
+            return new CONErrorBLL(settings);
+        }
+
+        public CONIntegratorConfigurationBLL GetCONIntegratorConfigurationDL()
+        {
+            return new CONIntegratorConfigurationBLL(settings);
+        }
+
+        public CONIntegratorBLL GetCONIntegratorDL()
+        {
+            return new CONIntegratorBLL(settings);
+        }
+
+        public CONRecordDetailBLL GetCONRecordDetailDL()
+        {
+            return new CONRecordDetailBLL(settings);
+        }
+
+        public CONRecordBLL GetCONRecordDL()
+        {
+            return new CONRecordBLL(settings);
+        }
+
+        public CONSQLDetailBLL GetCONSQLDetailDL()
+        {
+            return new CONSQLDetailBLL(settings);
+        }
+
+        public CONSQLParameterBLL GetCONSQLParameterDL()
+        {
+            return new CONSQLParameterBLL(settings);
+        }
+
+        public CONSQLBLL GetCONSQLDL()
+        {
+            return new CONSQLBLL(settings);
+        }
+
+        public CONSQLSendBLL GetCONSQLSendDL()
+        {
+            return new CONSQLSendBLL(settings);
+        }
+
+        public CONStructureAssociationBLL GetCONStructureAssociationDL()
+        {
+            return new CONStructureAssociationBLL(settings);
+        }
+
+        public CONStructureDetailBLL GetCONStructureDetailDL()
+        {
+            return new CONStructureDetailBLL(settings);
+        }
+
+        public CONStructureBLL GetCONStructureDL()
+        {
+            return new CONStructureBLL(settings);
+        }
+
+        public SECCompanyBLL GetSECCompanyDL()
+        {
+            return new SECCompanyBLL(settings);
+        }
+
+        public SECConnectionBLL GetSECConnectionDL()
+        {
+            return new SECConnectionBLL(settings);
+        }
+
+        public SECRolePermissionBLL GetSECRolePermissionDL()
+        {
+            return new SECRolePermissionBLL(settings);
+        }
+
+        public SECRoleBLL GetSECRoleDL()
+        {
+            return new SECRoleBLL(settings);
+        }
+
+        public SECUserCompanyBLL GetSECUserCompanyDL()
+        {
+            return new SECUserCompanyBLL(settings);
+        }
+
+        public SECUserBLL GetSECUserDL()
+        {
+            return new SECUserBLL(settings);
+        }
+
+
+    }
+}

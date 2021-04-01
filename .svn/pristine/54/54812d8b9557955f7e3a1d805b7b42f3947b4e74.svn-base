@@ -1,0 +1,24 @@
+﻿using EasyTools.Framework.Persistance;
+
+namespace EasyTools.Domains
+{
+    public class DomainLogic
+    {
+        private DatabaseSetting settings;
+
+        public DomainLogic(DatabaseSetting settings)
+        {
+            this.settings = settings;
+        }
+
+        //public SECEntityBLL GetSECEntityBLL()
+        //{
+        //    return new SECEntityBLL(settings);
+        //}
+
+        //public CONEntityBLL GetCONEntityBLL()
+        //{
+        //    return new CONEntityBLL(settings);
+        //}
+    }
+}

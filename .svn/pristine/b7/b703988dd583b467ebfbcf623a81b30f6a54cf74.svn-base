@@ -1,0 +1,69 @@
+﻿using EasyTools.Domains;
+using EasyTools.Framework.Application;
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EasyTools.UI.Console.Test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Configuration conf = Configuration;
+            //DomainLogic bll = new DomainLogic(conf.GetDatabaseSetting("Pruebas"));
+            //var datas = bll.GetSECEntityBLL().FindAll(new SECEntity(), Options.All);
+            //SECRole role = new SECRole();
+            //role.Active = true;
+            //role.Id = 0;
+            //role.LastUpdate = DateTime.Now;
+            //role.Name = "Admin";
+            //role.UpdatedBy = "admin";
+            //SECEntity entity = new SECEntity();
+            //entity.Entity = role.GetType().Name;
+            //entity.LastUpdate = DateTime.Now;
+            //entity.UpdatedBy = "admin";
+            //entity.Value = XMLSerializer.SerializeToString<SECRole>(role);
+            //var ent = bll.GetSECEntityBLL().Execute(entity, Actions.Add, Options.All, "");
+        }
+
+        private static Configuration configuration;
+
+        public static Configuration Configuration
+        {
+            get
+            {
+                if (configuration == null)
+                {
+                    try
+                    {
+                        configuration = XMLSerializer.ReadFileToDataContract<Configuration>("Configurations.xml");
+                        if (configuration.AppSettings["PasswordsAreEncrypted"] == "false" && configuration.AppSettings["PasswordsNeedBeEncrypted"] == "true")
+                            if (configuration.DataBaseSettings.Count > 0)
+                            {
+                                foreach (DatabaseSetting item in App.Current.Configuration.DataBaseSettings)
+                                {
+                                    item.Password = Crypto.EncrytedString(item.Password);
+                                }
+                                App.Current.Configuration.AppSettings["PasswordsAreEncrypted"] = "true";
+                                App.Current.Configuration.AppSettings["PasswordsNeedBeEncrypted"] = "false";
+                                XMLSerializer.WriteDataContractToFile<Configuration>(App.Current.Configuration, "Configurations.xml");
+                            }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+                if (App.Current.Configuration == null)
+                    App.AddCurrentConfiguration(configuration);
+                return configuration;
+            }
+        }
+    }
+}

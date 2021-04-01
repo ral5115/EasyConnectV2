@@ -1,0 +1,7 @@
+Install-Package NHibernate
+Install-Package FluentNHibernate
+Install-Package ODP.NET4
+
+
+Install-Package Prism
+Install-Package Prism.UnityExtensions

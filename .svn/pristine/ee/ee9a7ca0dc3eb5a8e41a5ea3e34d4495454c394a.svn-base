@@ -1,0 +1,76 @@
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+
+namespace EasyTools.Infrastructure.Repositories.Base
+{
+
+   public class BaseSECRoleRepository : BaseRepository<SECRole>
+   {
+
+      public BaseSECRoleRepository(IUnitOfWork context) : base(context)
+      {
+      }
+
+        public override String GetQuery(SECRole data, Boolean byId)
+        {
+           String dml = "Select a from SECRole as a where 1=1 ";
+           if (byId)
+           {
+              if (  data.Id != 0 )
+                 dml += "             AND a.Id = :Id \n" ;
+           }
+           else
+           {
+              if (  data.Id != 0 )
+                 dml += "             AND a.Id = :Id \n" ;
+              if (  !String.IsNullOrWhiteSpace(data.Name) )
+                         dml += "             AND upper(a.Name) like :Name \n" ;
+
+           }
+           return dml;
+        }
+
+        public override void SetQueryParameters(IQuery query, SECRole data, Boolean byId)
+        {
+           if (byId)
+           {
+              if (  data.Id != 0 )
+                 query.SetInt32("Id", data.Id);
+           }
+           else
+           {
+              if (  data.Id != 0 )
+                 query.SetInt32("Id", data.Id);
+              if (  !String.IsNullOrWhiteSpace(data.Name) )
+                 query.SetString("Name",  "%" + data.Name.ToUpper() + "%" );
+           }
+        }
+
+
+        public override void SaveOrUpdateDetails(SECRole data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AddMoreDetailFindById(SECRole data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override SECRole FindById(SECRole data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<SECRole> FindAll(SECRole data, Options option)
+        {
+            throw new NotImplementedException();
+        }
+   }
+}

@@ -1,0 +1,261 @@
+﻿using EasyTools.Framework.Application;
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using EasyTools.Infrastructure.Mappings;
+using EasyTools.Infrastructure.Repositories;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+
+namespace EasyTools.Infrastructure
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private ISession session;
+
+        public ISession Session
+        {
+            get
+            {
+                if (session == null || !session.IsOpen)
+                    session = PersistenceManager.GetCurrentSession(Settings.Name);
+                return session;
+            }
+            private set
+            {
+                session = value;
+            }
+        }
+
+        private ITransaction transaction;
+
+        private Dictionary<string, dynamic> _repositories;
+
+        public DatabaseSetting Settings { get; private set; }
+
+        public UnitOfWork(DatabaseSetting confg)
+        {
+            Settings = confg;
+            if (!PersistenceManager.IsValidSession(Settings.Name))
+                AddDefaultConfig(Settings);
+            Session = PersistenceManager.GetCurrentSession(Settings.Name);
+            LoadReposiories();
+        }
+
+        public Boolean IsTransactional { get; set; }
+
+        public void BeginTransaction()
+        {
+            transaction = Session.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            if (transaction != null && transaction.IsActive)
+                transaction.Commit();
+        }
+
+        public void Dispose()
+        {
+            Session.Close();
+        }
+
+        public void Rollback()
+        {
+            if (transaction != null && transaction.IsActive)
+                transaction.Rollback();
+        }
+
+        public void AddDefaultConfig(DatabaseSetting confg)
+        {
+            confg.Types.Add(typeof(CONEquivalenceDetailMap));
+            confg.Types.Add(typeof(CONEquivalenceMap));
+            confg.Types.Add(typeof(CONErrorMap));
+            confg.Types.Add(typeof(CONIntegratorConfigurationMap));
+            confg.Types.Add(typeof(CONIntegratorMap));
+            confg.Types.Add(typeof(CONRecordDetailMap));
+            confg.Types.Add(typeof(CONRecordMap));
+            confg.Types.Add(typeof(CONSQLDetailMap));
+            confg.Types.Add(typeof(CONSQLParameterMap));
+            confg.Types.Add(typeof(CONSQLMap));
+            confg.Types.Add(typeof(CONSQLSendMap));
+            confg.Types.Add(typeof(CONStructureAssociationMap));
+            confg.Types.Add(typeof(CONStructureDetailMap));
+            confg.Types.Add(typeof(CONStructureMap));
+            confg.Types.Add(typeof(SECCompanyMap));
+            confg.Types.Add(typeof(SECConnectionMap));
+            confg.Types.Add(typeof(SECRolePermissionMap));
+            confg.Types.Add(typeof(SECRoleMap));
+            confg.Types.Add(typeof(SECUserCompanyMap));
+            confg.Types.Add(typeof(SECUserMap));
+            confg.Types.Add(typeof(EXTFileOperaMap));
+            confg.Types.Add(typeof(EXTFileOperaDetailMap));
+            PersistenceManager.SetConfigure(confg);
+        }
+
+        private void LoadReposiories()
+        {
+            if (_repositories == null)
+                _repositories = new Dictionary<string, dynamic>();
+            _repositories.Add(typeof(CONEquivalenceDetail).Name, new CONEquivalenceDetailRepository(this));
+            _repositories.Add(typeof(CONEquivalence).Name, new CONEquivalenceRepository(this));
+            _repositories.Add(typeof(CONError).Name, new CONErrorRepository(this));
+            _repositories.Add(typeof(CONIntegratorConfiguration).Name, new CONIntegratorConfigurationRepository(this));
+            _repositories.Add(typeof(CONIntegrator).Name, new CONIntegratorRepository(this));
+            _repositories.Add(typeof(CONRecordDetail).Name, new CONRecordDetailRepository(this));
+            _repositories.Add(typeof(CONRecord).Name, new CONRecordRepository(this));
+            _repositories.Add(typeof(CONSQLDetail).Name, new CONSQLDetailRepository(this));
+            _repositories.Add(typeof(CONSQLParameter).Name, new CONSQLParameterRepository(this));
+            _repositories.Add(typeof(CONSQL).Name, new CONSQLRepository(this));
+            _repositories.Add(typeof(CONSQLSend).Name, new CONSQLSendRepository(this));
+            _repositories.Add(typeof(CONStructureAssociation).Name, new CONStructureAssociationRepository(this));
+            _repositories.Add(typeof(CONStructureDetail).Name, new CONStructureDetailRepository(this));
+            _repositories.Add(typeof(CONStructure).Name, new CONStructureRepository(this));
+            _repositories.Add(typeof(SECCompany).Name, new SECCompanyRepository(this));
+            _repositories.Add(typeof(SECConnection).Name, new SECConnectionRepository(this));
+            _repositories.Add(typeof(SECRolePermission).Name, new SECRolePermissionRepository(this));
+            _repositories.Add(typeof(SECRole).Name, new SECRoleRepository(this));
+            _repositories.Add(typeof(SECUserCompany).Name, new SECUserCompanyRepository(this));
+            _repositories.Add(typeof(SECUser).Name, new SECUserRepository(this));
+            _repositories.Add(typeof(EXTFileOpera).Name, new EXTFileOperaRepository(this));
+            _repositories.Add(typeof(EXTFileOperaDetail).Name, new EXTFileOperaDetailRepository(this));
+
+        }
+        public BaseRepository<T> Repository<T>() where T : FrameworkEntity
+        {
+            if (_repositories == null)
+            {
+                _repositories = new Dictionary<string, dynamic>();
+            }
+
+            var type = typeof(T).Name;
+
+            if (_repositories.ContainsKey(type))
+            {
+                return (BaseRepository<T>)_repositories[type];
+            }
+
+            var repositoryType = typeof(T);
+
+            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), Session));
+
+            return _repositories[type];
+        }
+
+        public ResultList ExecuteDirecSQL(string connectionString, DBType dbType, string sqlSentence, List<SQLParameter> parameters)
+        {
+            DatabaseDirectAcces databaseDirec = new DatabaseDirectAcces(connectionString, dbType);
+            return databaseDirec.ExecuteQuery(sqlSentence, parameters, 0);
+        }
+
+        public Boolean ValidateDocumentUNOEE(string connectionString, DBType dbType, short idCia, string coDocto, string tipoDocto, int consecDocto)
+        {
+            string sqlSentence = "";
+            sqlSentence = "select count(0) Nro  from t350_co_docto_contable where f350_id_cia = " + idCia + " and f350_id_co = '" + coDocto + "' and f350_id_tipo_docto = '" + tipoDocto + "' and f350_consec_docto = " + consecDocto;
+            DatabaseDirectAcces databaseDirec = new DatabaseDirectAcces(connectionString, dbType);
+            ResultList dat = databaseDirec.ExecuteQuery(sqlSentence, new List<SQLParameter>(), 0);
+            if (dat.GetIntValue(0, "Nro") == 0)
+                return true;
+            else
+                return false;
+        }
+
+        public void InsertT667ImpConectorControl(string connectionString, DBType dbType, string f667_ts_proceso, Int16 f667_id_cia, string f667_referencia)
+        {
+            string sqlSentence = " INSERT INTO t667_imp_conector_control(f667_ts_proceso,f667_id_cia,f667_referencia,f667_ind_procesable,f667_ind_error,f667_estado_proceso) VALUES (@f667_ts_proceso,@f667_id_cia, @f667_referencia,@f667_ind_procesable, @f667_ind_error,@f667_estado_proceso) ";
+            List<SQLParameter> parameters = new List<SQLParameter>();
+            parameters.Add(new SQLParameter { Name = "@f667_ts_proceso", IsString = true, StringValue = f667_ts_proceso });
+            parameters.Add(new SQLParameter { Name = "@f667_id_cia", IsInt = true, Int32Value = f667_id_cia });
+            parameters.Add(new SQLParameter { Name = "@f667_referencia", IsString = true, StringValue = f667_referencia });
+            parameters.Add(new SQLParameter { Name = "@f667_ind_procesable", IsInt = true, Int32Value = 1 });
+            parameters.Add(new SQLParameter { Name = "@f667_ind_error", IsInt = true, Int32Value = 0 });
+            parameters.Add(new SQLParameter { Name = "@f667_estado_proceso", IsInt = true, Int32Value = 0 });
+            DatabaseDirectAcces databaseDirec = new DatabaseDirectAcces(connectionString, dbType);
+            databaseDirec.ExecuteNonQuery(sqlSentence, parameters);
+        }
+
+        public void InsertT668ImpConectorDetalle(string connectionString, DBType dbType, string f667_ts_proceso, Int16 f667_id_cia, string f667_referencia, string registro)
+        {
+            string sqlSentence = " INSERT INTO t668_imp_conector_detalle (f668_ts_proceso, f668_id_cia, f668_referencia, f668_registro) VALUES (@f668_ts_proceso,@f668_id_cia,@f668_referencia,@f668_registro) ";
+            List<SQLParameter> parameters = new List<SQLParameter>();
+            parameters.Add(new SQLParameter { Name = "@f668_ts_proceso", IsString = true, StringValue = f667_ts_proceso });
+            parameters.Add(new SQLParameter { Name = "@f668_id_cia", IsInt = true, Int32Value = f667_id_cia });
+            parameters.Add(new SQLParameter { Name = "@f668_referencia", IsString = true, StringValue = f667_referencia });
+            parameters.Add(new SQLParameter { Name = "@f668_registro", IsString = true, StringValue = registro });
+            DatabaseDirectAcces databaseDirec = new DatabaseDirectAcces(connectionString, dbType);
+            databaseDirec.ExecuteNonQuery(sqlSentence, parameters);
+        }
+
+        public List<CONError> GetImportErrors(string connectionString, DBType dbType, string f667_ts_proceso, Int16 f667_id_cia, string f667_referencia, int numRef)
+        {
+            string stringError = string.Empty;
+            string sqlSentence = "select f664_ts_proceso, f664_id_cia, f664_referencia,  ErrorLevel, ErrorValue, ErrorDetail, RecordNumber, RecordType, SubRecordType, Version, UpdatedBy, LastUpdate ";
+            sqlSentence += "        from ( ";
+            //sqlSentence += "               select a.f664_ts_proceso,a.f664_id_cia,a.f664_referencia, 0 ErrorId, 1 ErrorLevel, 'Encabezado' ErrorValue, a.f664_detalle ErrorDetail, 0 RecordId, 0 RecordNumber, 0 RecordType, 0 SubRecordType, 0 Version, '' UpdatedBy, a.f664_ts_inicial LastUpdate ";
+            //sqlSentence += "                 from t664_imp_log_control a, ";
+            //sqlSentence += "                      t665_imp_log_detalle b ";
+            //sqlSentence += "                WHERE a.f664_rowid = b.f665_rowid_imp_log ";
+            //sqlSentence += "                union all ";
+            sqlSentence += "                select a.f664_ts_proceso,a.f664_id_cia,a.f664_referencia, 0 ErrorId, b.f665_nivel_error ErrorLevel, b.f665_valor_error ErrorValue, b.f665_detalle_error ErrorDetail, 0 RecordId, b.f665_nro_registro RecordNumber, b.f665_tipo_reg RecordType, b.f665_subtipo_reg SubRecordType, b.f665_version Version, '' UpdatedBy, a.f664_ts_final LastUpdate ";
+            sqlSentence += "                  from t664_imp_log_control a, ";
+            sqlSentence += "                       t665_imp_log_detalle b ";
+            sqlSentence += "                 WHERE a.f664_rowid = b.f665_rowid_imp_log ";
+            sqlSentence += "             ) as Errros ";
+            sqlSentence += "       where f664_ts_proceso = @f664_ts_proceso and ";
+            sqlSentence += "             f664_id_cia = @f664_id_cia and ";
+            sqlSentence += "             f664_referencia = @f664_referencia ";
+            List<SQLParameter> parameters = new List<SQLParameter>();
+            parameters.Add(new SQLParameter { Name = "@f664_ts_proceso", IsString = true, StringValue = f667_ts_proceso });
+            parameters.Add(new SQLParameter { Name = "@f664_id_cia", IsInt = true, Int32Value = f667_id_cia });
+            parameters.Add(new SQLParameter { Name = "@f664_referencia", IsString = true, StringValue = f667_referencia });
+            DatabaseDirectAcces databaseDirec = new DatabaseDirectAcces(connectionString, dbType);
+            ResultList result = databaseDirec.ExecuteQuery(sqlSentence, parameters, 0);
+            List<CONError> errors = new List<CONError>();
+            if (numRef != 0)
+            {
+                if (numRef.Equals(1))
+                    stringError = "•	1 = Problemas de Datos o Estructura.";
+                if (numRef.Equals(2))
+                    stringError = "•	2 = Faltan parámetros de llamado.";
+                else if (numRef.Equals(3))
+                    stringError = "•	3 = El usuario enviado no existe o no es válido.";
+                else if (numRef.Equals(4))
+                    stringError = "•	4 = Error al inicializar servidores de UNOEE.";
+                else if (numRef.Equals(5))
+                    stringError = "•	5 = Error al conectarse a la base de datos, número de conexión no válida o error en la configuración de la conexión.";
+                else if (numRef.Equals(6))
+                    stringError = "•	6 = Ruta del archivo enviado no existe. Aplica cuando la fuente de información es 0 (Archivo plano).";
+                else if (numRef.Equals(7))
+                    stringError = "•	7 = El archivo enviado no es válido, puede ser porque el tamaño es 0 o hubo error al accesar el archivo, aplica cuando la fuente de información es 0 (Archivo plano).";
+                else if (numRef.Equals(8))
+                    stringError = "•	8 = No es posible encontrar información en la tabla t667 o t668 con los parámetros 6, 7 y la compañía enviada, aplica cuando la fuente de información es 1 (Tablas del sistema)";
+                else if (numRef.Equals(9))
+                    stringError = "•	9 = Compañía no válida.";
+                else if (numRef.Equals(10))
+                    stringError = "•	10 = Windows desconocido. La versión del sistema operativo no pudo ser leída.";
+                else if (numRef.Equals(99))
+                    stringError = "•    99 =  Otro no identificado.";
+                if (!String.IsNullOrWhiteSpace(stringError) && numRef != 1)
+                    errors.Add(new CONError { ErrorDetail = stringError, ErrorLevel = 1, ErrorValue = "Error de Importación" });
+            }
+            if (result != null && result.GetRows().Count > 0)
+            {
+                for (int i = 0; i < result.GetRows().Count; i++)
+                {
+                    CONError error = new CONError();
+                    error.ErrorLevel = (Int16)result.GetIntValue(i, "ErrorLevel");
+                    error.ErrorValue = result.GetStringValue(i, "ErrorValue");
+                    error.ErrorDetail = result.GetStringValue(i, "ErrorDetail");
+                    error.RecordType = result.GetIntValue(i, "RecordType");
+                    error.SubRecordType = result.GetIntValue(i, "SubRecordType");
+                    error.Version = result.GetIntValue(i, "Version");
+                    error.LastUpdate = result.GetDateTimeValue(i, "LastUpdate");
+                    errors.Add(error);
+                }
+            }
+            return errors;
+        }
+    }
+}

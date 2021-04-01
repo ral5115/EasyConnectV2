@@ -1,0 +1,48 @@
+﻿<Core:BaseUserControl 
+    x:Class="EasyTools.UI.WPF.EasyConnect.Module.Views.CONSQLExecuteView"
+    xmlns:Core="clr-namespace:EasyTools.Framework.UI;assembly=EasyTools.Framework.WPF" 
+    xmlns:Data="clr-namespace:EasyTools.UI.Data;assembly=EasyTools.UI.Data" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" HorizontalContentAlignment="Left" Loaded="UserControlLoaded" VerticalContentAlignment="Top">
+    <Core:BaseUserControl.Resources>
+        <Data:EasyApp x:Key="dataProvider"/>
+        <Core:FormNotificationErrorMessageConverter x:Key="formNotificationErrorMessageConverter" />
+        <Core:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+    </Core:BaseUserControl.Resources>
+    <StackPanel Height="550" Width="600">
+        <Core:FormToolbar Name="Toolbar" FormNewCommand="{Binding NewCommand}" FormEditCommand="{Binding EditCommand}" FormSaveCommand="{Binding SaveCommand}" FormSaveNewCommand="{Binding SaveNewCommand}" FormDeleteCommand="{Binding DeleteCommand}" FormFindCommand="{Binding FindCommand}" Visibility="Collapsed"/>
+        <Core:FormGrid Name="SQLsGrid" ItemsSource="{Binding Model.SQLDetails}" AutoGenerateColumns="False" CanUserInsertRows="False" CanUserDeleteRows="False" GroupRenderMode="Nested" ShowGroupPanel="False" SelectionMode="Extended" SelectionUnit="FullRow" SelectionChanged="DetailsSelectedItemsChanged" Height="200">
+            <Core:FormGrid.Columns>
+                <Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.CONSQLViewDescriptionField, Source={StaticResource languages}}" DataMemberBinding="{Binding Description}" Width="380"/>
+                <!--<Core:GridCheckBoxColumn IsReadOnly="false" Header="{Binding Resources.CONSQLViewSendField, Source={StaticResource languages}}" DataMemberBinding="{Binding Model.Send}" Width="80"/>-->
+                <Core:GridSelectColumn/>
+            </Core:FormGrid.Columns>
+        </Core:FormGrid>
+        <StackPanel KeyboardNavigation.TabNavigation="Cycle">
+            <Core:FormGrid Name="ParameterGrid" ItemsSource="{Binding Model.SQLParameters}" AutoGenerateColumns="False" CanUserInsertRows="False" CanUserDeleteRows="False" GroupRenderMode="Nested" ShowGroupPanel="False" SelectionMode="Single"  Height="100" SelectionUnit="FullRow" RowActivated="ParameterGrid_RowActivated">
+                <Core:FormGrid.Columns>
+                    <Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONSQLViewParameterNameField, Source={StaticResource languages}}" DataMemberBinding="{Binding Name}" Width="200"/>
+                   <!--<Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONSQLViewParameterDateValueField, Source={StaticResource languages}}" DataMemberBinding="{Binding DateValue}" Width="120"/>
+                    <Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONSQLViewParameterIntValueField, Source={StaticResource languages}}" DataMemberBinding="{Binding Int32Value}" Width="120"/>
+                    <Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONSQLViewParameterStringValueField, Source={StaticResource languages}}" DataMemberBinding="{Binding StringValue}" Width="120"/>-->
+                    <Core:GridExpressionColumn Header="{Binding Resources.CONSQLExecuteViewValueField, Source={StaticResource languages}}" UniqueName="Value" Width="*"/>
+                </Core:FormGrid.Columns>
+            </Core:FormGrid>
+            <Core:FormGrid Visibility={} x:Name="IntegratorConfigurationsGrid" ItemsSource="{Binding Model.SQLSends}" AutoGenerateColumns="False" CanUserInsertRows="False" CanUserDeleteRows="False" GroupRenderMode="Nested" ShowGroupPanel="False" SelectionMode="Extended"  Height="150" SelectionUnit="FullRow">
+                <Core:FormGrid.Columns>
+                    <!--<Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONIntegratorConfigurationTitle1, Source={StaticResource languages}}" DataMemberBinding="{Binding CONIntegratorConfiguration.WebServiceUrl}" Width="300"/>
+                    <Core:GridDataColumn  IsReadOnly="True" Header="{Binding Resources.CONIntegratorConfigurationTitle2, Source={StaticResource languages}}" DataMemberBinding="{Binding CONIntegratorConfiguration.InternalConnectionName}" Width="190"/>-->
+                    <Core:GridExpressionColumn Header="{Binding Resources.CONSQLViewValueField, Source={StaticResource languages}}" UniqueName="ValueConnection" Width="*"/>
+                    <Core:GridSelectColumn/>
+                </Core:FormGrid.Columns>
+            </Core:FormGrid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Core:FormFieldCheckBox Name="Accounting" Content="Contabilizar?" Style="{StaticResource FormFieldCheckBoxStyle}" IsChecked="{Binding Path=Model.Accounting, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"/>
+            <Core:FormButton FormButtonToolTip="{Binding Resources.CONSQLExecuteOK,    Source={StaticResource languages}}" FormButtonCommand="{Binding ExecuteCommand}" FormButtonIsEnable="{Binding Path=Model.IsValid, Mode=TwoWay}" FormButtonLabel="{Binding Resources.CONSQLExecuteOK, Source={StaticResource languages}}" FormButtonImage="/EasyTools.Framework.WPF;component/Images/OKHover16.png"/>
+        </StackPanel>
+    </StackPanel>
+</Core:BaseUserControl>

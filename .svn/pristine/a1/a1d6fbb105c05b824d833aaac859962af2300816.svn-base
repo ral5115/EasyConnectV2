@@ -1,0 +1,77 @@
+<Core:BaseUserControl 
+    x:Class="EasyTools.UI.WPF.Security.Module.Views.SECConnectionView" 
+    xmlns:Core="clr-namespace:EasyTools.Framework.UI;assembly=EasyTools.Framework.WPF" 
+    xmlns:Data="clr-namespace:EasyTools.UI.Data;assembly=EasyTools.UI.Data"  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    HorizontalContentAlignment="Left" Loaded="UserControlLoaded"> 
+    <Core:BaseUserControl.Resources>
+        <Data:EasyApp x:Key="dataProvider"/>
+        <Core:FormNotificationErrorMessageConverter x:Key="formNotificationErrorMessageConverter" />
+    </Core:BaseUserControl.Resources>
+    <StackPanel>
+        <Core:FormToolbar FormNewCommand="{Binding NewCommand}" FormEditCommand="{Binding EditCommand}" FormSaveCommand="{Binding SaveCommand}" FormSaveNewCommand="{Binding SaveNewCommand}" FormDeleteCommand="{Binding DeleteCommand}" FormFindCommand="{Binding FindCommand}"/> 
+        <Core:FormExpander IsExpanded="{Binding FormHeaderExpanded, Mode=TwoWay}" Header="{Binding Resources.ExpanderTitle, Source={StaticResource languages}}">
+            <Core:FormGrid ItemsSource="{Binding Model.Details}" AutoGenerateColumns="False" CanUserInsertRows="False" CanUserDeleteRows="False" GroupRenderMode="Nested" ShowGroupPanel="False" SelectionMode="Single" SelectionChanged="DetailsSelectedItemsChanged" >
+                <Core:FormGrid.Columns>
+                    <Core:GridCheckBoxColumn IsReadOnly="True" Header="{Binding Resources.SECUserViewActiveField, Source={StaticResource languages}}" DataMemberBinding="{Binding Active}" Width="80"/>
+                    <Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.SECUserViewLoginField, Source={StaticResource languages}}" DataMemberBinding="{Binding Login}" Width="80"/>
+                    <!--<Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.SECUserViewPasswordField, Source={StaticResource languages}}" DataMemberBinding="{Binding Password}" Width="80"/>-->
+                    <Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.SECUserViewServiceField, Source={StaticResource languages}}" DataMemberBinding="{Binding Service}" Width="80"/>
+                    <Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.SECUserViewDBField, Source={StaticResource languages}}" DataMemberBinding="{Binding DB}" Width="80"/>
+                    <Core:GridDataColumn     IsReadOnly="True" Header="{Binding Resources.SECUserViewNameField, Source={StaticResource languages}}" DataMemberBinding="{Binding Name}" Width="80"/>
+                </Core:FormGrid.Columns> 
+            </Core:FormGrid>
+        </Core:FormExpander>
+        <Core:FormNotification IsTabStop="False" Margin="15,5,15,0" WatermarkMessage="{Binding Resources.FormWatermarkMessage, Source={StaticResource languages}}" ErrorHeaderText="{Binding Resources.FormErrorMessage, Source={StaticResource languages}}" NotificationMessage="{Binding Resources.FormNotificationMessage, Source={StaticResource languages}}" Height="28" Panel.ZIndex="99" AutoCollapseTimeout="2" > 
+            <Core:FormNotification.ErrorMessage> 
+                <MultiBinding Converter="{StaticResource formNotificationErrorMessageConverter}"> 
+                    <Binding Path="Model.Errors" /> 
+                </MultiBinding> 
+            </Core:FormNotification.ErrorMessage> 
+        </Core:FormNotification> 
+        <StackPanel KeyboardNavigation.TabNavigation="Cycle"> 
+            <Core:FormTitle Title="{Binding Resources.SECConnectionViewTitle1, Source={StaticResource languages}}" />
+            <Grid Margin="10" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Core:FormFieldLabel         Grid.Row="0" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewNameField, Source={StaticResource languages}}"/>
+                <Core:FormFieldTextBox       Grid.Row="0" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.Name, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />
+                <Core:FormFieldCheckBox      Grid.Row="0" Grid.Column="2" Style="{StaticResource FormFieldCheckBoxStyle}" Content="{Binding Resources.SECConnectionViewActiveField, Source={StaticResource languages}}" IsChecked="{Binding Path=Model.Active, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" />
+                <Core:FormFieldLabel         Grid.Row="1" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewDbTypeField, Source={StaticResource languages}}"/>
+                <Core:FormFieldComboBox      Grid.Row="1" Grid.Column="1" Style="{StaticResource FormFieldComboBoxStyle}" Width="230" ItemsSource="{Binding Current.ListDbTypes,Source={StaticResource dataProvider}}" SelectedItem="{Binding Path=Model.DbType,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True }" DisplayMemberPath="Name"/>
+                <Core:FormFieldLabel         Grid.Row="2" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewServiceField, Source={StaticResource languages}}"/>
+                <Core:FormFieldTextBox       Grid.Row="2" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.Service, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />
+                <Core:FormFieldLabel         Grid.Row="3" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewDBField, Source={StaticResource languages}}"/>
+                <Core:FormFieldTextBox       Grid.Row="3" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.DB, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />
+
+                <!--<Core:FormFieldLabel         Grid.Row="3" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewActiveField, Source={StaticResource languages}}"/>--> 
+                    
+                    <Core:FormFieldLabel         Grid.Row="4" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewLoginField, Source={StaticResource languages}}"/> 
+                    <Core:FormFieldTextBox       Grid.Row="4" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.Login, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />
+                    <Core:FormFieldLabel         Grid.Row="5" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewPasswordField, Source={StaticResource languages}}"/> 
+                    <!--<Core:FormFieldTextBox       Grid.Row="5" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.Password, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />-->
+                    <PasswordBox                 Grid.Row="5" Grid.Column="1" Style="{StaticResource PasswordBoxStyle}" Width="230" Core:PasswordBoxAssistant.BindPassword="true" Core:PasswordBoxAssistant.BoundPassword="{Binding Model.Password, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" />
+                    
+                   
+                    <!--<Core:FormFieldLabel         Grid.Row="7" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.SECConnectionViewCompanyField, Source={StaticResource languages}}"/> 
+                    <Core:FormFieldComboBox      Grid.Row="7" Grid.Column="1" Style="{StaticResource FormFieldComboBoxStyle}" Width="230" ItemsSource="{Binding Current.ListSECConnections,Source={StaticResource dataProvider}}" SelectedItem="{Binding Path=Model.Company,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True }" DisplayMemberPath="Name"/>--> 
+                    
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</Core:BaseUserControl>

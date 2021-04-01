@@ -1,0 +1,79 @@
+using EasyTools.Framework.Data;
+using EasyTools.Framework.Persistance;
+using EasyTools.Infrastructure.Entities;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+
+namespace EasyTools.Infrastructure.Repositories.Base
+{
+
+    public class BaseSECUserCompanyRepository : BaseRepository<SECUserCompany>
+    {
+
+        public BaseSECUserCompanyRepository(IUnitOfWork context) : base(context)
+        {
+        }
+
+        public override String GetQuery(SECUserCompany data, Boolean byId)
+        {
+            String dml = "Select a from SECUserCompany as a where 1=1 ";
+            if (byId)
+            {
+                if (data.Id != 0)
+                    dml += "             AND a.Id = :Id \n";
+            }
+            else
+            {
+                if (data.Id != 0)
+                    dml += "             AND a.Id = :Id \n";
+                if (data.CompanyId != 0)
+                    dml += "             AND a.CompanyId = :CompanyId \n";
+                if (data.UserId != 0)
+                    dml += "             AND a.UserId = :UserId \n";
+
+            }
+            return dml;
+        }
+
+        public override void SetQueryParameters(IQuery query, SECUserCompany data, Boolean byId)
+        {
+            if (byId)
+            {
+                if (data.Id != 0)
+                    query.SetInt32("Id", data.Id);
+            }
+            else
+            {
+                if (data.Id != 0)
+                    query.SetInt32("Id", data.Id);
+                if (data.CompanyId != 0)
+                    query.SetInt32("CompanyId", data.CompanyId);
+                if (data.UserId != 0)
+                    query.SetInt32("UserId", data.UserId);
+            }
+        }
+
+        public override void SaveOrUpdateDetails(SECUserCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AddMoreDetailFindById(SECUserCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override SECUserCompany FindById(SECUserCompany data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<SECUserCompany> FindAll(SECUserCompany data, Options option)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

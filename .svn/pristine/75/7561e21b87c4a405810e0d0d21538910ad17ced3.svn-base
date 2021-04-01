@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C075DAC-24C9-4B1A-8F05-B7E298DF863A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyTools.Framework</RootNamespace>
+    <AssemblyName>EasyTools.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <HintPath>..\..\packages\ODP.NET4.4.112.3\lib\Oracle.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\App.cs" />
+    <Compile Include="Application\BusinessException.cs" />
+    <Compile Include="Application\Configuration.cs" />
+    <Compile Include="Persistance\DBType.cs" />
+    <Compile Include="Application\Resources.cs" />
+    <Compile Include="Application\UserSession.cs" />
+    <Compile Include="Application\XMLSerializer.cs" />
+    <Compile Include="Data\Actions.cs" />
+    <Compile Include="Data\Crypto.cs" />
+    <Compile Include="Data\FrameworkEntity.cs" />
+    <Compile Include="Data\IDomainLogic.cs" />
+    <Compile Include="Data\IEntity.cs" />
+    <Compile Include="Data\Options.cs" />
+    <Compile Include="Data\Permission.cs" />
+    <Compile Include="Data\ResultList.cs" />
+    <Compile Include="Data\Utils.cs" />
+    <Compile Include="Persistance\BaseRepository.cs" />
+    <Compile Include="Persistance\DatabaseContext.cs" />
+    <Compile Include="Persistance\DatabaseDirectAcces.cs" />
+    <Compile Include="Persistance\DatabaseSetting.cs" />
+    <Compile Include="Persistance\IUnitOfWork.cs" />
+    <Compile Include="Persistance\PersistenceManager.cs" />
+    <Compile Include="Persistance\SQLParameter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\DeleteHover16.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\LogoSiesaAlta.jpg" />
+    <Content Include="Images\New.png" />
+    <Content Include="Images\newFile.png" />
+    <Content Include="Images\OKHover16.png" />
+    <Content Include="Images\PowerLogOff.png" />
+    <Content Include="Images\Save.png" />
+    <Content Include="Images\SaveNew.png" />
+    <Content Include="Images\settings.png" />
+    <Content Include="Images\teammembers.png" />
+    <Content Include="Images\touchpad_ic_checkbox2_normal.png" />
+    <Content Include="Images\tray_remove.png" />
+    <Content Include="Images\tsearch.gif" />
+    <Content Include="Images\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

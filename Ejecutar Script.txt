@@ -1,0 +1,1 @@
+C:\Users\deiber.caicedo\Documents>sqlcmd -S DEV01 -U sa -P siesa-123 -d EasyConnectV2 -i Facturas.sql

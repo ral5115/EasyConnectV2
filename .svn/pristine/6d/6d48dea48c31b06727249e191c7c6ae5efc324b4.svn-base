@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\EasyTools.Framework.WPF\packages.config" />
+  <repository path="..\EasyTools.Framework\packages.config" />
+  <repository path="..\EasyTools.UI.WPF.EasyConnect.Module\packages.config" />
+  <repository path="..\src\EasyTools.Framework.WPF\packages.config" />
+  <repository path="..\src\EasyTools.Framework\packages.config" />
+  <repository path="..\src\EasyTools.Infrastructure\packages.config" />
+  <repository path="..\src\EasyTools.UI.Data\packages.config" />
+  <repository path="..\src\EasyTools.UI.WPF.EasyConnect.Module\packages.config" />
+  <repository path="..\src\EasyTools.UI.WPF.Engine.Module\packages.config" />
+  <repository path="..\src\EasyTools.UI.WPF.Security.Module\packages.config" />
+  <repository path="..\src\EasyTools.UI.WPF.Telerik\packages.config" />
+</repositories>

@@ -1,0 +1,33 @@
+﻿using EasyTools.Framework.Data;
+using NHibernate;
+using System;
+using System.Collections.Generic;
+
+namespace EasyTools.Framework.Persistance
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        void Commit();
+
+        void Rollback();
+
+        void BeginTransaction();
+
+        BaseRepository<T> Repository<T>() where T : FrameworkEntity;
+
+        DatabaseSetting Settings { get; }
+
+        ISession Session { get; }
+
+        Boolean IsTransactional { get; set; }
+
+        ResultList ExecuteDirecSQL(string connectionString, DBType dbType, string sqlSentence, List<SQLParameter> parameters);
+
+        Boolean ValidateDocumentUNOEE(string connectionString, DBType dbType, short idCia, string coDocto, string tipoDocto, int consecDocto);
+
+        void InsertT667ImpConectorControl(string connectionString, DBType dbType, string f667_ts_proceso, Int16 f667_id_cia, string f667_referencia);
+
+        void InsertT668ImpConectorDetalle(string connectionString, DBType dbType, string f667_ts_proceso, Int16 f667_id_cia, string f667_referencia, string registro);
+
+    }
+}

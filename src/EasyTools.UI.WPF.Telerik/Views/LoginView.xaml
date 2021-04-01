@@ -1,0 +1,69 @@
+﻿<Core:BaseUserControl 
+    x:Class="EasyTools.UI.WPF.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Core="clr-namespace:EasyTools.Framework.UI;assembly=EasyTools.Framework.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Data="clr-namespace:EasyTools.UI.Data;assembly=EasyTools.UI.Data"  
+    mc:Ignorable="d">
+    <Core:BaseUserControl.Resources>
+        <Data:EasyApp x:Key="dataProvider"/>
+        <Core:FormNotificationErrorMessageConverter x:Key="formNotificationErrorMessageConverter" />
+    </Core:BaseUserControl.Resources>
+    <AdornerDecorator>
+        <Grid>
+            <Border Background="#90000000" Visibility="{Binding Visibility}">
+                <Border BorderBrush="Black" BorderThickness="1" Background="White" CornerRadius="10,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <!--<Border BorderBrush="Black" BorderThickness="1" Background="AliceBlue" CornerRadius="10,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Center" >-->
+                    <Border.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Opacity="0.5" Direction="270" ShadowDepth="0.7" />
+                    </Border.BitmapEffect>
+                    <StackPanel>
+                        <Image Source="/EasyTools.Framework.WPF;component/Images/LogoSiesaAlta.jpg"  Margin="5,10,5,5" Height="73" Width="361"/>
+                        <Grid Background="{StaticResource MainHeader}" Margin="0,0,0,5">
+                            <TextBlock Text="{Binding Resources.LoginViewTitle, Source={StaticResource languages}}" Style="{StaticResource TextBlockTitleStyle}" Foreground="White" FontWeight="Bold" />
+                        </Grid>
+                        <Rectangle HorizontalAlignment="Stretch" Height="1" Fill="#19000000" VerticalAlignment="Bottom"/>
+                        <Core:FormNotification IsTabStop="False" Margin="15,5,15,0" WatermarkMessage="{Binding Resources.FormWatermarkMessage, Source={StaticResource languages}}" ErrorHeaderText="{Binding Resources.FormErrorMessage, Source={StaticResource languages}}" NotificationMessage="{Binding Resources.FormNotificationMessage, Source={StaticResource languages}}" Height="28" Panel.ZIndex="99" AutoCollapseTimeout="2">
+                            <Core:FormNotification.ErrorMessage>
+                                <MultiBinding Converter="{StaticResource formNotificationErrorMessageConverter}">
+                                    <Binding Path="Model.Errors" />
+                                </MultiBinding>
+                            </Core:FormNotification.ErrorMessage>
+                        </Core:FormNotification>
+                        <Grid Margin="10" HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Core:FormFieldLabel    Grid.Row="0" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.LoginViewConnectTo, Source={StaticResource languages}}"/>
+                            <Core:FormFieldComboBox Grid.Row="0" Grid.Column="1" Style="{StaticResource FormFieldComboBoxStyle}" Width="230" ItemsSource="{Binding Current.ListDatabaseSettings,Source={StaticResource dataProvider}}" SelectedItem="{Binding Path=Model.DatabaseSetting,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True }" DisplayMemberPath="Name" Core:BindingCommand.Event="DropDownOpened" Core:BindingCommand.Command="{Binding LoadDatabaseSettingsCommand}"/>
+                            <Core:FormFieldLabel    Grid.Row="1" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.LoginViewLogin, Source={StaticResource languages}}"/>
+                            <Core:FormFieldTextBox  Grid.Row="1" Grid.Column="1" Style="{StaticResource FormFieldTextBoxStyle}" Width="230" Value="{Binding Model.Login, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Mask="" SelectionOnFocus="Default" IsClearButtonVisible="False" />
+                            <Core:FormFieldLabel    Grid.Row="2" Grid.Column="0" Style="{StaticResource FormFieldLabelStyle}" Content="{Binding Resources.LoginViewPassword, Source={StaticResource languages}}"/>
+                            <PasswordBox            Grid.Row="2" Grid.Column="1" Style="{StaticResource PasswordBoxStyle}" Width="230" Core:PasswordBoxAssistant.BindPassword="true" Core:PasswordBoxAssistant.BoundPassword="{Binding Model.Password, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" />
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <Core:FormButton FormButtonToolTip="{Binding Resources.LoginViewButtonLogin, Source={StaticResource languages}}" FormButtonCommand="{Binding OkCommand}" FormButtonIsEnable="{Binding Path=Model.IsValid, Mode=TwoWay}" FormButtonLabel="{Binding Resources.LoginViewButtonLogin, Source={StaticResource languages}}" FormButtonImage="/EasyTools.Framework.WPF;component/Images/OKHover16.png"/>
+                            <Core:FormButton FormButtonToolTip="{Binding Resources.LoginViewButtonCancel, Source={StaticResource languages}}" FormButtonCommand="{Binding CancelCommand}" FormButtonIsEnable="true" FormButtonLabel="{Binding Resources.LoginViewButtonCancel, Source={StaticResource languages}}" FormButtonImage="/EasyTools.Framework.WPF;component/Images/DeleteHover16.png"/>
+                        </StackPanel>
+                        <StackPanel Margin="5,5,5,5" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding Resources.LoginViewDeveloperBy, Source={StaticResource languages}}" TextAlignment="Center" TextWrapping="Wrap" Width="260" FontFamily="Segoe UI" Foreground="DimGray"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10,0,6,0">
+                                <TextBlock Text="{Binding Resources.LoginViewProductVersion, Source={StaticResource languages}}" FontFamily="Segoe UI" Foreground="DimGray"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Resources.LoginViewVersion, Source={StaticResource languages}}" FontFamily="Segoe UI" Foreground="DimGray" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Grid>
+    </AdornerDecorator>
+</Core:BaseUserControl>

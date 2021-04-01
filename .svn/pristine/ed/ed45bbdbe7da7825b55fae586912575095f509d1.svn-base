@@ -1,0 +1,135 @@
+using EasyTools.Framework.Data;
+using EasyTools.Framework.UI;
+using EasyTools.Infrastructure.Entities;
+using EasyTools.UI.Data;
+using EasyTools.UI.WPF.EasyConnect.Module.ViewModels.Base;
+using EasyTools.UI.WPF.EasyConnect.Module.Views;
+using Microsoft.Practices.Prism.PubSubEvents;
+using Microsoft.Practices.Unity;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
+using System.Windows;
+using System.Windows.Input;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace EasyTools.UI.WPF.EasyConnect.Module.ViewModels
+{
+   public class CONRecordViewModel : BaseCONRecordViewModel
+   {
+       private StringBuilder stringXML = null;
+      
+       public CONRecordViewModel(IUnityContainer container,CONRecordView view)  : base(container, view)
+      {
+          this.SendCommand = new RelayCommand(OnSendCommand);
+          this.GenerateFilesCommand = new RelayCommand(OnGenerateFilesCommand);
+      }
+
+      public override void RegisterPermisions()
+      {
+         base.RegisterPermisions();
+
+         //Register additional permission here!!!.
+      }
+
+      #region Commands
+
+      public override void NewAction()
+      {
+         base.NewAction();
+         //Register new actions here!!!.
+      }
+
+      public override void SaveAction(bool createNew)
+      {
+         //base.SaveAction(createNew);
+
+         //Register new actions here!!!.
+      }
+
+      public override void DeleteAction()
+      {
+         //base.DeleteAction();
+
+         //Register new actions here!!!.
+      }
+
+      public override void FindAction()
+      {
+         base.FindAction();
+
+         //Register new actions here!!!.
+      }
+
+      public ICommand SendCommand { get; protected set; }
+      public async void  OnSendCommand(object obj)
+      {
+          Mouse.OverrideCursor = Cursors.Wait;
+          if (view.RecordGrid.SelectedItems != null && view.RecordGrid.SelectedItems.Count > 0)
+          {
+              List<CONRecord> records = new List<CONRecord>();
+              
+              
+              foreach (CONRecord item in view.RecordGrid.SelectedItems)
+                  records.Add(item);
+
+              for (int i = 0; i < records.Count; i++)
+                  records[i] = (CONRecord)EasyApp.Current.eToolsServer().Execute(new CONRecord { Id = records[i].Id }, Actions.Find, Options.Me, EasyApp.Current.DefaultDatabaseSettingName, "");
+                           
+               CONSQL send = ((CONSQL)await EasyApp.Current.eToolsServer().ExecuteAsync(new CONSQL { Records = records }, Actions.Generate, Options.All, EasyApp.Current.DefaultDatabaseSettingName, ""));
+              if(!(bool)send.GetAditionalProperty("Result"))
+                  MessageBox.Show("Proceso con Errores", "Proceso Terminado", MessageBoxButton.OK, MessageBoxImage.Error);
+              else
+                  MessageBox.Show("Procesado correctamente", "Proceso Terminado", MessageBoxButton.OK, MessageBoxImage.Information);
+              Model.Details = new BindingList<CONRecord>();
+              FindAction();
+              
+          }
+
+      
+      }
+
+      public ICommand GenerateFilesCommand { get; protected set; }
+      public async void OnGenerateFilesCommand(object obj)
+      {
+          CONRecord files = new CONRecord();
+          var option = MessageBox.Show("Si desea generar un archivo por cada documento, selecione Si\nSi desea generar un unico archivo por todos los documentos, seleccione No","Como Generar el Archivo?", MessageBoxButton.YesNoCancel);
+          if (option.ToString() != "Cancel")
+          {
+              if (view.RecordGrid.SelectedItems != null && view.RecordGrid.SelectedItems.Count > 0)
+              {
+                  if (stringXML == null)
+                  {
+                      List<CONRecord> records = new List<CONRecord>();
+                      stringXML = new StringBuilder();
+                      foreach (var item in view.RecordGrid.SelectedItems)
+                      {
+                          records.Add((CONRecord)item);
+                          
+                      }
+                      if (option.ToString() == "Yes")
+                      files = ((CONRecord)await EasyApp.Current.eToolsServer().ExecuteAsync(new CONRecord { Entities = records }, Actions.Generate, Options.Light, EasyApp.Current.DefaultDatabaseSettingName, ""));
+                      else if (option.ToString()=="No")
+                      files = ((CONRecord)await EasyApp.Current.eToolsServer().ExecuteAsync(new CONRecord { Entities = records }, Actions.Generate, Options.All, EasyApp.Current.DefaultDatabaseSettingName, ""));
+                  }
+
+              }
+          }
+      }
+      #endregion
+
+      #region Events
+
+      public override void OnDataGridDetailSelectionChange(object sender, DataEventArgs<CONRecord> e)
+      {
+         //base.OnDataGridDetailSelectionChange(sender, e);
+
+         //Register new actions here!!!.
+      }
+
+      #endregion
+   }
+
+}

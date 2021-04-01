@@ -1,0 +1,141 @@
+﻿using EasyTools.Framework.Data;
+using NHibernate;
+using Oracle.DataAccess.Client;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace EasyTools.Framework.Persistance
+{
+
+    public abstract class BaseRepository<T> where T : FrameworkEntity
+    {
+
+        protected IUnitOfWork work;
+
+        public BaseRepository(IUnitOfWork context)
+        {
+            work = context;
+        }
+
+        public abstract void SaveOrUpdateDetails(T data);
+
+        public T Add(T data)
+        {
+            data.Id = (Int32)work.Session.Save(data);
+            SaveOrUpdateDetails(data);
+            return data;
+        }
+
+        public T Modify(T data)
+        {
+            work.Session.Update(data);
+            SaveOrUpdateDetails(data);
+            return data;
+        }
+
+        public T Remove(T data)
+        {
+            work.Session.Delete(data);
+            return data;
+        }
+
+        public T Remove(List<T> datas)
+        {
+            T data = null;
+            if (datas != null && datas.Count > 0)
+                for (int i = 0; i < datas.Count; i++)
+                {
+                    work.Session.Delete(datas[i]);
+                    if (i == datas.Count - 1)
+                        data = datas[i];
+                }
+            return data;
+        }
+
+        public abstract void AddMoreDetailFindById(T data);
+
+        public abstract T FindById(T data);
+
+        public bool Exist(T data)
+        {
+            return FindById(data) != null;
+        }
+
+        public abstract List<T> FindAll(T data, Options option);
+
+        public abstract String GetQuery(T data, Boolean byId);
+
+        public abstract void SetQueryParameters(IQuery query, T data, Boolean byId);
+
+        public Int32 GetConsecutive(string consecutiveId)
+        {
+            int secuence = 0;
+            string connectString = PersistenceManager.GetConnecttionString(work.Session.Connection.ConnectionString);// "Pooling=true; Enlist=false; Statement Cache Size=50; Min Pool Size=10; Incr Pool Size=5; Decr Pool Size=2; Data Source= DEV ;User ID=INTEGRACION;Password=INTEGRACION";
+
+            if (work.Session.Connection.ToString().Contains("Oracle"))
+            {
+
+                using (OracleConnection objConn = new OracleConnection(connectString))
+                {
+                    OracleCommand objCmd = new OracleCommand();
+                    objCmd.Connection = objConn;
+                    objCmd.CommandText = "GetNHConcecutives";
+                    objCmd.CommandType = CommandType.StoredProcedure;
+                    objCmd.Parameters.Add("PConsecutiveId", OracleDbType.Varchar2).Value = consecutiveId;
+                    objCmd.Parameters.Add("PType", OracleDbType.Int32).Value = 0;
+                    objCmd.Parameters.Add("PSecuence", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                    OracleTransaction trans = null;
+                    try
+                    {
+                        objConn.Open();
+                        trans = objConn.BeginTransaction();
+                        objCmd.ExecuteNonQuery();
+                        trans.Commit();
+                        secuence = Int32.Parse(objCmd.Parameters["PSecuence"].Value.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        trans.Rollback();
+                    }
+                    objConn.Close();
+                }
+                return secuence;
+            }
+            else
+            {
+                using (SqlConnection objConn = new SqlConnection(connectString))
+                {
+                    SqlCommand objCmd = new SqlCommand();
+                    objCmd.Connection = objConn;
+                    objCmd.CommandText = "GetNHConcecutives";
+                    objCmd.CommandType = CommandType.StoredProcedure;
+                    objCmd.Parameters.AddWithValue("ConsecutiveId", consecutiveId);
+                    objCmd.Parameters.AddWithValue("Type", 0);
+                    objCmd.Parameters.AddWithValue("Secuence", secuence).Direction = ParameterDirection.Output;
+                    SqlTransaction trans = null;
+                    try
+                    {
+                        objConn.Open();
+                        trans = objConn.BeginTransaction();
+                        objCmd.ExecuteNonQuery();
+                        trans.Commit();
+                        secuence = Int32.Parse(objCmd.Parameters["Secuence"].Value.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        trans.Rollback();
+                    }
+                    objConn.Close();
+                }
+                return secuence;
+                //IQuery query = Session.CreateSQLQuery("EXEC dbo.GetNHConcecutives  :ConsecutiveId , :Type");
+                //query.SetString("ConsecutiveId", consecutiveId);
+                //query.SetInt32("Type", 0);
+                //return Int32.Parse(query.List()[0].ToString());
+            }
+        }
+
+    }
+}

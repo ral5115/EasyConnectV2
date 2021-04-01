@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="i1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/EasyTools.Framework.Application">
+  <AppSettings xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>PasswordsAreEncrypted</d2p1:Key>
+      <d2p1:Value>false</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>PasswordsNeedBeEncrypted</d2p1:Key>
+      <d2p1:Value>true</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+    <d2p1:KeyValueOfstringstring>
+      <d2p1:Key>PallalelProcessNumber</d2p1:Key>
+      <d2p1:Value>20</d2p1:Value>
+    </d2p1:KeyValueOfstringstring>
+  </AppSettings>
+  <DataBaseSettings xmlns:d2p1="http://schemas.datacontract.org/2004/07/EasyTools.Framework.Persistance">
+
+    <d2p1:DatabaseSetting z:Id="i2">
+      <d2p1:DBType>SQLServer</d2p1:DBType>
+      <d2p1:DbName>EasyConnectV2</d2p1:DbName>
+      <d2p1:Default>true</d2p1:Default>
+      <d2p1:Language>es</d2p1:Language>
+      <d2p1:Name>Pruebas</d2p1:Name>
+      <d2p1:Password>UsrSpring2014$$</d2p1:Password>
+      <d2p1:Server>192.168.190.31</d2p1:Server>
+      <d2p1:UserName>usrspring</d2p1:UserName>
+    </d2p1:DatabaseSetting>
+  </DataBaseSettings>
+
+  <!--  <d2p1:DatabaseSetting z:Id="i2">
+    <d2p1:DBType>SQLServer</d2p1:DBType>
+    <d2p1:DbName>EasyConnectV2</d2p1:DbName>
+    <d2p1:Default>true</d2p1:Default>
+    <d2p1:Language>es</d2p1:Language>
+    <d2p1:Name>Pruebas</d2p1:Name>
+    <d2p1:Password>siesa-123</d2p1:Password>
+    <d2p1:Server>optimus.siesa.com</d2p1:Server>
+    <d2p1:UserName>sa</d2p1:UserName>
+  </d2p1:DatabaseSetting>
+  </DataBaseSettings>-->
+
+</Configuration>

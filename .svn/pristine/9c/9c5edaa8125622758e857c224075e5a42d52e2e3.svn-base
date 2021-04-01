@@ -1,0 +1,310 @@
+﻿using EasyTools.Framework.Data;
+using EasyTools.Infrastructure.Entities;
+using System;
+using System.Collections.Generic;
+
+namespace EasyTools.Domains.Installation.Data
+{
+    public abstract class InvariantSeedData
+    {
+        public List<SECRole> Roles()
+        {
+            var entities = new List<SECRole>
+			{
+                new SECRole
+				{
+					Name = "Administrator",
+				    Active = true	 ,
+                    LastUpdate = DateTime.Now,
+                    UpdatedBy = "admin",
+                    Users = new List<SECUser>
+                    {
+                        new SECUser
+				        {
+					        Login = "admin",
+                            Password = Crypto.EncrytedString("portal"),
+                            RepeatPassword = Crypto.EncrytedString("portal"),
+                            Active = true ,
+                            Names = "Deiber",
+                            FatherLastName = "Caicedo",
+                            MotherLastName = "",
+                            IdentificationNumber = "94497774",
+                            Email = "deibercaicedo@hotmail.com",
+                            LastUpdate = DateTime.Now,
+                            UpdatedBy = "admin",
+				        },
+                    }
+				},
+            };
+            Alter(entities);
+            return entities;
+        }
+
+        protected virtual void Alter(List<SECRole> entities)
+        {
+        }
+
+        public List<SECUser> Users()
+        {
+            var entities = new List<SECUser>();
+            Alter(entities);
+            return entities;
+        }
+
+        protected virtual void Alter(List<SECUser> entities)
+        {
+        }
+
+        //public List<SECLanguage> Languages()
+        //{
+        //    var entities = new List<SECLanguage>
+        //    {
+        //        new SECLanguage
+        //        {
+        //            Name = "Español",
+        //            Culture = "es-CO",
+        //            UniqueSeoCode = "es",
+        //            LastUpdate = DateTime.Now,
+        //            UpdatedBy = "admin",
+        //        },
+        //    };
+        //    Alter(entities);
+        //    return entities;
+        //}
+
+        //protected virtual void Alter(List<SECLanguage> entities)
+        //{
+        //}
+
+   //     public List<SECType> Types()
+   //     {
+   //         var entities = new List<SECType>
+			//{
+   //             new SECType
+			//	{
+			//        Name = "Sistemas operativos",
+   //                 Active = true,
+   //                 LastUpdate = DateTime.Now,
+   //                 UpdatedBy = "admin",
+   //                 TypeValues = new List<SECTypeValue>
+   //                 {
+   //                     new SECTypeValue
+   //                     {
+   //                         Code = "WINS",
+   //                         Name = "Windows Server",
+   //                         Active = true,
+   //                         LastUpdate = DateTime.Now,
+   //                         UpdatedBy = "admin",
+   //                         TypeValueDetails = new List<SECTypeValueDetail>
+   //                         {   new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K",
+   //                                 Name = "Windows Server 2000",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K3",
+   //                                 Name = "Windows Server 2003",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K3R2",
+   //                                 Name = "Windows Server 2003 R2",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K8",
+   //                                 Name = "Windows Server 2008",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K8R2",
+   //                                 Name = "Windows Server 2008 R2",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K12",
+   //                                 Name = "Windows Server 2012",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "W2K12R2",
+   //                                 Name = "Windows Server 2012 R2",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                         }
+   //                     },
+   //                 }
+			//	},
+   //             new SECType
+			//	{
+			//        Name = "Bases de datos",
+   //                 Active = true,
+   //                 LastUpdate = DateTime.Now,
+   //                 UpdatedBy = "admin",
+   //                 TypeValues = new List<SECTypeValue>
+   //                 {
+   //                     new SECTypeValue
+   //                     {
+   //                         Code = "SQL",
+   //                         Name = "SQL Server",
+   //                         Active = true,
+   //                         LastUpdate = DateTime.Now,
+   //                         UpdatedBy = "admin",
+   //                         TypeValueDetails = new List<SECTypeValueDetail>
+   //                         {   new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K",
+   //                                 Name = "SQL Server 2000",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K5",
+   //                                 Name = "SQL Server 2005",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K8",
+   //                                 Name = "SQL Server 2008",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K8R2",
+   //                                 Name = "SQL Server 2008 R2",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K12",
+   //                                 Name = "SQL Server 2012",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "S2K14",
+   //                                 Name = "SQL Server 2014",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                         }
+   //                     },
+   //                     new SECTypeValue
+   //                     {
+   //                         Code = "ORCL",
+   //                         Name = "Oracle",
+   //                         Active = true,
+   //                         LastUpdate = DateTime.Now,
+   //                         UpdatedBy = "admin",
+   //                         TypeValueDetails = new List<SECTypeValueDetail>
+   //                         {   new SECTypeValueDetail
+   //                             {
+   //                                 Code = "O8i",
+   //                                 Name = "Oracle 8i",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "O9i",
+   //                                 Name = "Oracle 9i",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "O10G",
+   //                                 Name = "Oracle 10G",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "O11G",
+   //                                 Name = "Oracle 11G",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                             new SECTypeValueDetail
+   //                             {
+   //                                 Code = "O12C",
+   //                                 Name = "Oracle 12C",
+   //                                 Active = true,
+   //                                 LastUpdate = DateTime.Now,
+   //                                 UpdatedBy = "admin",
+   //                             },
+   //                         }
+   //                     },
+   //                 }
+			//	},
+   //         };
+   //         Alter(entities);
+   //         return entities;
+   //     }
+
+   //     protected virtual void Alter(List<SECType> entities)
+   //     {
+   //     }
+
+        public List<SECCompany> Companies()
+        {
+            var entities = new List<SECCompany>
+			{
+                new SECCompany
+				{
+			        IdentificationNumer = "890319193",
+                    TradeName = "Sistemas de Información Empresarial S.A",
+                    Active = true,
+                    LastUpdate = DateTime.Now,
+                    UpdatedBy = "admin",
+				},
+            };
+            Alter(entities);
+            return entities;
+        }
+
+        protected virtual void Alter(List<SECCompany> entities)
+        {
+        }
+
+
+
+    }
+}

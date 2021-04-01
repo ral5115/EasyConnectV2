@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginViewLogin" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="LoginViewPassword" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="LoginViewConnectTo" xml:space="preserve">
+    <value>Conectar a</value>
+  </data>
+  <data name="LoginViewLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LoginViewButtonLogin" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="LoginViewDeveloperBy" xml:space="preserve">
+    <value>Este producto fue desarrollado por Sistemas de Información Empresarial S.A                          S1ESA | Desarrollos Especiales</value>
+  </data>
+  <data name="LoginViewLicensedTo" xml:space="preserve">
+    <value>Licenciado a:</value>
+  </data>
+  <data name="LoginViewProductVersion" xml:space="preserve">
+    <value>Versión del Producto</value>
+  </data>
+  <data name="ToolBarDeleteButtonToolTip" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ToolBarEditButtonToolTip" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="ToolBarNewButtonToolTip" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="ToolBarSaveButtonToolTip" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="LoginViewTitle" xml:space="preserve">
+    <value>Easy Tools:   Iniciar sesión</value>
+  </data>
+  <data name="LoginViewVersion" xml:space="preserve">
+    <value>2.15.0101</value>
+  </data>
+  <data name="ShellViewAppName" xml:space="preserve">
+    <value>Easy Tools</value>
+  </data>
+  <data name="ShellViewOutlookBarTitle" xml:space="preserve">
+    <value>Menú Principal</value>
+  </data>
+  <data name="SECUserViewLoginField" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="LoginViewButtonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ApplicationErrorFieldRequired" xml:space="preserve">
+    <value>El campo {0} es obligatorio</value>
+  </data>
+  <data name="ApplicationErrorStringOptional" xml:space="preserve">
+    <value>El campo {0} debe contener menos de {1} caracter(es)</value>
+  </data>
+  <data name="ApplicationErrorStringRequired" xml:space="preserve">
+    <value>El campo {0} debe contener mas de {1} caracter(es) y menos de {2}</value>
+  </data>
+  <data name="FormErrorMessage" xml:space="preserve">
+    <value>Validaciones Pendientes</value>
+  </data>
+  <data name="FormNotificationMessage" xml:space="preserve">
+    <value>Cargando</value>
+  </data>
+  <data name="FormWatermarkMessage" xml:space="preserve">
+    <value>Nuevo Registro</value>
+  </data>
+  <data name="SECUserViewTitle" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="ToolBarFindButtonToolTip" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="SECUserViewPasswordField" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="ApplicationErrorEmailValid" xml:space="preserve">
+    <value>El formato del correo electronico no es valido</value>
+  </data>
+  <data name="SECRoleViewRoleField" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="SECUserViewActiveField" xml:space="preserve">
+    <value>Activo?</value>
+  </data>
+  <data name="SECUserViewEmailField" xml:space="preserve">
+    <value>Correo Electronico</value>
+  </data>
+  <data name="SECUserViewFatherLastNameField" xml:space="preserve">
+    <value>1er Apellido</value>
+  </data>
+  <data name="SECUserViewIdentificationNumberField" xml:space="preserve">
+    <value>Nro Identificación</value>
+  </data>
+  <data name="SECUserViewLockedField" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="SECUserViewMotherLastNameField" xml:space="preserve">
+    <value>2do Apellido</value>
+  </data>
+  <data name="SECUserViewNamesField" xml:space="preserve">
+    <value>Nombres</value>
+  </data>
+  <data name="SECUserViewRepeatPasswordField" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="SECUserViewRequiresVerificationField" xml:space="preserve">
+    <value>Requiere Validación</value>
+  </data>
+  <data name="SECUserViewRepeatPasswordCompareField" xml:space="preserve">
+    <value>La confirmación de la contraseña no coincide</value>
+  </data>
+  <data name="SECUserViewTitle1" xml:space="preserve">
+    <value>Información de la Cuenta</value>
+  </data>
+  <data name="SECUserViewTitle2" xml:space="preserve">
+    <value>Información Personal</value>
+  </data>
+  <data name="SECRoleViewActiveField" xml:space="preserve">
+    <value>Activo?</value>
+  </data>
+  <data name="SECRoleViewNameField" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="SECRoleViewTitle" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="SECCompanyViewActiveField" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="SECCompanyViewIdentificationNumerField" xml:space="preserve">
+    <value>Nro Identificación</value>
+  </data>
+  <data name="SECCompanyViewTitle" xml:space="preserve">
+    <value>Compañias</value>
+  </data>
+  <data name="SECCompanyViewTradeNameField" xml:space="preserve">
+    <value>Razón Social</value>
+  </data>
+  <data name="SECConnectionViewActiveField" xml:space="preserve">
+    <value>Activo?</value>
+  </data>
+  <data name="SECConnectionViewDBField" xml:space="preserve">
+    <value>Base de Datos</value>
+  </data>
+  <data name="SECConnectionViewLoginField" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="SECConnectionViewNameField" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="SECConnectionViewPasswordField" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="SECConnectionViewServiceField" xml:space="preserve">
+    <value>Servidor / Servicio</value>
+  </data>
+  <data name="SECConnectionViewTitle1" xml:space="preserve">
+    <value>Conexiones</value>
+  </data>
+  <data name="SECConnectionViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="SECConnectionViewDbTypeField" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="ToolBarSaveNewButtonToolTip" xml:space="preserve">
+    <value>Guardar y Nuevo</value>
+  </data>
+  <data name="ExpanderTitle" xml:space="preserve">
+    <value>Resultados</value>
+  </data>
+  <data name="SECUserViewRoleField" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="CONEquivalenceTitle1" xml:space="preserve">
+    <value>Equivalencias</value>
+  </data>
+  <data name="CONEquivalenceViewActiveField" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="CONEquivalenceViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue1Field" xml:space="preserve">
+    <value>Valor 1</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue2Field" xml:space="preserve">
+    <value>Valor 2</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue3Field" xml:space="preserve">
+    <value>Valor 3</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue4Field" xml:space="preserve">
+    <value>Valor 4</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue5Field" xml:space="preserve">
+    <value>Valor 5</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue6Field" xml:space="preserve">
+    <value>Valor 6</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue7Field" xml:space="preserve">
+    <value>Valor 7</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue8Field" xml:space="preserve">
+    <value>Valor 8</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue9Field" xml:space="preserve">
+    <value>Valor 9</value>
+  </data>
+  <data name="CONEquivalenceViewNameField" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CONSQLViewActiveField" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="CONSQLViewAutomaticField" xml:space="preserve">
+    <value>Automatico</value>
+  </data>
+  <data name="CONSQLViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="CONSQLViewConnectionField" xml:space="preserve">
+    <value>Conexión</value>
+  </data>
+  <data name="CONSQLViewDescriptionField" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="CONSQLViewDestinyConnectionField" xml:space="preserve">
+    <value>Conexión Destino</value>
+  </data>
+  <data name="CONSQLViewExecuteStoreProcedureField" xml:space="preserve">
+    <value>Procedimiento Almacenado</value>
+  </data>
+  <data name="CONSQLViewFileExtensionField" xml:space="preserve">
+    <value>Ext</value>
+  </data>
+  <data name="CONSQLViewFileNameField" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="CONSQLViewGenerateFileField" xml:space="preserve">
+    <value>Genera Archivo</value>
+  </data>
+  <data name="CONSQLViewMainSQLField" xml:space="preserve">
+    <value>SQL Principal</value>
+  </data>
+  <data name="CONSQLViewSQLSentenceField" xml:space="preserve">
+    <value>Sentencia SQL</value>
+  </data>
+  <data name="CONSQLViewStoreProcedureConnectionField" xml:space="preserve">
+    <value>Conexión Procedimiento Almacenado</value>
+  </data>
+  <data name="CONSQLViewStructureField" xml:space="preserve">
+    <value>Estructura</value>
+  </data>
+  <data name="CONSQLViewTagField" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="CONSQLTitle1" xml:space="preserve">
+    <value>Interfaces</value>
+  </data>
+  <data name="CONErrorViewErrorDetailField" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="CONErrorViewErrorLevelField" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="CONErrorViewErrorValueField" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="CONErrorViewRecordField" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="CONErrorViewRecordNumberField" xml:space="preserve">
+    <value>Nro Registro</value>
+  </data>
+  <data name="CONErrorViewRecordTypeField" xml:space="preserve">
+    <value>Tipo Registro</value>
+  </data>
+  <data name="CONErrorViewSubRecordTypeField" xml:space="preserve">
+    <value>Sub Tipo Registro</value>
+  </data>
+  <data name="CONErrorViewVersionField" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="CONErrorTitle1" xml:space="preserve">
+    <value>Problemas</value>
+  </data>
+  <data name="CONIntegratorConfigurationTitle1" xml:space="preserve">
+    <value>Importaciones</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewActiveField" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewIntegratorField" xml:space="preserve">
+    <value>Integrador</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewInternalConnectionNameField" xml:space="preserve">
+    <value>Nombre Conexión</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewInternalPasswordField" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewInternalUserField" xml:space="preserve">
+    <value>Usuario   </value>
+  </data>
+  <data name="CONIntegratorConfigurationViewWebServiceUrlField" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="CONRecordViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="CONRecordViewDocumentNumberField" xml:space="preserve">
+    <value>Nro Documento</value>
+  </data>
+  <data name="CONRecordViewDocumentTypeField" xml:space="preserve">
+    <value>Tipo Documento</value>
+  </data>
+  <data name="CONRecordViewIsExternalField" xml:space="preserve">
+    <value>Externo</value>
+  </data>
+  <data name="CONRecordViewIsSendField" xml:space="preserve">
+    <value>Enviado</value>
+  </data>
+  <data name="CONRecordViewLogicalKeyField" xml:space="preserve">
+    <value>Llave Logica</value>
+  </data>
+  <data name="CONRecordViewOperationCenterField" xml:space="preserve">
+    <value>Centro de Operacion</value>
+  </data>
+  <data name="CONRecordViewPlainTextField" xml:space="preserve">
+    <value>Texto en Archivo</value>
+  </data>
+  <data name="CONRecordViewRecordNumberField" xml:space="preserve">
+    <value>Nro Registro</value>
+  </data>
+  <data name="CONRecordViewRecordTypeField" xml:space="preserve">
+    <value>Tipo Registro</value>
+  </data>
+  <data name="CONRecordViewSQLField" xml:space="preserve">
+    <value>SQL</value>
+  </data>
+  <data name="CONRecordViewSubRecordTypeField" xml:space="preserve">
+    <value>Subtipo Registro</value>
+  </data>
+  <data name="CONRecordViewVersionField" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="CONRecordViewXMLDataField" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="CONRecordTitle1" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="CONEquivalenceDetailViewCodeField" xml:space="preserve">
+    <value>Codigo</value>
+  </data>
+  <data name="CONEquivalenceDetailViewNameField" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CONSQLTitle2" xml:space="preserve">
+    <value>Columnas</value>
+  </data>
+  <data name="CONSQLTitle3" xml:space="preserve">
+    <value>Información Adicional</value>
+  </data>
+  <data name="CONSQLTitle4" xml:space="preserve">
+    <value>Parametros</value>
+  </data>
+  <data name="CONSQLViewEquivalenceColumnIdField" xml:space="preserve">
+    <value>Valor Equivalencia</value>
+  </data>
+  <data name="CONSQLViewEquivalenceField" xml:space="preserve">
+    <value>Equivalencia</value>
+  </data>
+  <data name="CONSQLViewFieldField" xml:space="preserve">
+    <value>Campo</value>
+  </data>
+  <data name="CONSQLViewStructureDetailField" xml:space="preserve">
+    <value>Estructura</value>
+  </data>
+  <data name="CONSQLViewParameterNameField" xml:space="preserve">
+    <value>Parametro</value>
+  </data>
+  <data name="CONSQLViewMappingButtonField" xml:space="preserve">
+    <value>Mapear Columnas</value>
+  </data>
+  <data name="SECUserViewInternalConnectionNameField" xml:space="preserve">
+    <value>Nombre Conexión</value>
+  </data>
+  <data name="SECUserViewInternalPasswordField" xml:space="preserve">
+    <value>Contraseña Usuario UnoEE</value>
+  </data>
+  <data name="SECUserViewInternalUserField" xml:space="preserve">
+    <value>Usuario UnoEE</value>
+  </data>
+  <data name="SECUserViewWebServiceUrlField" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="SECUserViewCompanyField" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="SECUserViewDocumentNumberField" xml:space="preserve">
+    <value>Nro Documento</value>
+  </data>
+  <data name="SECUserViewDocumentTypeField" xml:space="preserve">
+    <value>Tipo Doc</value>
+  </data>
+  <data name="SECUserViewIsExternalField" xml:space="preserve">
+    <value>Externo</value>
+  </data>
+  <data name="SECUserViewIsSendField" xml:space="preserve">
+    <value>Enviado</value>
+  </data>
+  <data name="SECUserViewLogicalKeyField" xml:space="preserve">
+    <value>Llave Logica</value>
+  </data>
+  <data name="SECUserViewOperationCenterField" xml:space="preserve">
+    <value>CO</value>
+  </data>
+  <data name="SECUserViewPlainTextField" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="SECUserViewRecordNumberField" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="SECUserViewRecordTypeField" xml:space="preserve">
+    <value> Tipo</value>
+  </data>
+  <data name="SECUserViewSubRecordTypeField" xml:space="preserve">
+    <value>Subtipo</value>
+  </data>
+  <data name="SECUserViewVersionField" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="SECUserViewXMLDataField" xml:space="preserve">
+    <value>Datos XML</value>
+  </data>
+  <data name="CONRecordViewGenerate" xml:space="preserve">
+    <value>Generar Planos</value>
+  </data>
+  <data name="CONRecordViewMarkAll" xml:space="preserve">
+    <value>Marcar Todos</value>
+  </data>
+  <data name="CONRecordViewMarkNotSend" xml:space="preserve">
+    <value>Marcar no Enviados</value>
+  </data>
+  <data name="CONRecordViewMarkSend" xml:space="preserve">
+    <value>Marcar Enviados</value>
+  </data>
+  <data name="CONRecordViewSend" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="CONRecordViewPageField" xml:space="preserve">
+    <value>Pagina</value>
+  </data>
+  <data name="CONRecordViewRegistersField" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="CONSQLViewButtonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CONSQLViewButtonOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="CONSQLViewEditChildWindow" xml:space="preserve">
+    <value>Editar detalle</value>
+  </data>
+  <data name="CONSQLViewCreateDetail" xml:space="preserve">
+    <value>Crear Detalle</value>
+  </data>
+  <data name="CONSQLViewCreateParameter" xml:space="preserve">
+    <value>Crear nuevo parametros</value>
+  </data>
+  <data name="CONSQLParameterViewDateValueField" xml:space="preserve">
+    <value>Valor Fecha</value>
+  </data>
+  <data name="CONSQLParameterViewDefaultDateValueField" xml:space="preserve">
+    <value>Fecha por Defecto</value>
+  </data>
+  <data name="CONSQLParameterViewInt32ValueField" xml:space="preserve">
+    <value>Valor Entero</value>
+  </data>
+  <data name="CONSQLParameterViewIsDateField" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="CONSQLParameterViewIsIntField" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="CONSQLParameterViewIsStringField" xml:space="preserve">
+    <value>Cadena</value>
+  </data>
+  <data name="CONSQLParameterViewNameField" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="CONSQLParameterViewStringValueField" xml:space="preserve">
+    <value>Valor Cadena</value>
+  </data>
+  <data name="CONSQLParameterViewSQLField" xml:space="preserve">
+    <value>SQL</value>
+  </data>
+  <data name="CONSQLParameterViewSecuenceField" xml:space="preserve">
+    <value>Secuencia</value>
+  </data>
+  <data name="CONSQLParameterTitle1" xml:space="preserve">
+    <value>Parametros</value>
+  </data>
+  <data name="CONParameterViewCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CONParameterViewOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SECUserViewErrorDetailField" xml:space="preserve">
+    <value>Detalle del Error</value>
+  </data>
+  <data name="CONSQLViewEditParameterdWindow" xml:space="preserve">
+    <value>Editar </value>
+  </data>
+  <data name="SECRoleViewMenuIdField" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="SECRoleViewPermissionIdField" xml:space="preserve">
+    <value>Permiso</value>
+  </data>
+  <data name="SECRoleViewButtonRefreshSecurity" xml:space="preserve">
+    <value>Refrescar Seguridades</value>
+  </data>
+  <data name="ApplicationAdd" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="ApplicationDeleting" xml:space="preserve">
+    <value>Eliminado</value>
+  </data>
+  <data name="ApplicationError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ApplicationInformation" xml:space="preserve">
+    <value>Información</value>
+  </data>
+  <data name="ApplicationModified" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="ApplicationNewRecord" xml:space="preserve">
+    <value>Nuevo Registro</value>
+  </data>
+  <data name="ApplicationPendingValidations" xml:space="preserve">
+    <value>Hay validaciones pendientes por favor verifique.</value>
+  </data>
+  <data name="ApplicationRecordDeletedSuccessfully" xml:space="preserve">
+    <value>Registro eliminado correctamente</value>
+  </data>
+  <data name="ApplicationSaveAndNew" xml:space="preserve">
+    <value>Registro guardado correctamente, desea crear un nuevo registro</value>
+  </data>
+  <data name="ApplicationValidateSaveModified" xml:space="preserve">
+    <value>No tiene permisos para {0} este registro.</value>
+  </data>
+  <data name="DLBUSINESSEXCEPTION" xml:space="preserve">
+    <value>Validaciones Pendientes</value>
+  </data>
+  <data name="DLBUSINESSNOTIMPLMENTOPERATION" xml:space="preserve">
+    <value>La operación que esta realizando no esta implementada</value>
+  </data>
+  <data name="DLCOLUMNISREQUIRED" xml:space="preserve">
+    <value>El campo {0} es obligatorio</value>
+  </data>
+  <data name="DLCOLUMNMAXLENGTH" xml:space="preserve">
+    <value>El numeo maximo de caracteres del campo {0} es de {1}</value>
+  </data>
+  <data name="DLTABLEIDNOTNULL" xml:space="preserve">
+    <value>El id de la tabla {0} es obligatorio</value>
+  </data>
+  <data name="DLTABLEIDNULL" xml:space="preserve">
+    <value>El id de la tabla {0} no puede contener datos</value>
+  </data>
+  <data name="DLTABLEREFERENCEBY" xml:space="preserve">
+    <value>No se puede eliminar el registro por que esta siendo referenciado por la tabla {0}</value>
+  </data>
+  <data name="DLTABLEROWIDNULL" xml:space="preserve">
+    <value>El rowid de la tabla {0} no puede contener datos</value>
+  </data>
+  <data name="DLTABLEVALUEEXIST" xml:space="preserve">
+    <value>El registro ya existe</value>
+  </data>
+  <data name="DLTABLEVALUENULL" xml:space="preserve">
+    <value>El valor no puede ser nulo o vacio clase: {0} tabla: {1}</value>
+  </data>
+  <data name="DLACTIONNOTIMPLEMENT" xml:space="preserve">
+    <value>La Acción: {0} Con opción: {1} No esta plementada</value>
+  </data>
+  <data name="ApplicationDelete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="CONSQLIntegratorConfigurationsIsActiveField" xml:space="preserve">
+    <value>Enviar a?</value>
+  </data>
+  <data name="CONSQLTitle5" xml:space="preserve">
+    <value>Importaciones</value>
+  </data>
+  <data name="CONSQLViewIntegratorConfigurationsNameField" xml:space="preserve">
+    <value>Nombre Conexion</value>
+  </data>
+  <data name="CONSQLViewIntegratorConfigurationsURLField" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="CONIntegratorConfigurationTitle2" xml:space="preserve">
+    <value>Conexion</value>
+  </data>
+  <data name="CONSQLViewParameterDateValueField" xml:space="preserve">
+    <value>Valor Fecha</value>
+  </data>
+  <data name="CONSQLViewParameterIntValueField" xml:space="preserve">
+    <value>Valor Entero</value>
+  </data>
+  <data name="CONSQLViewParameterStringValueField" xml:space="preserve">
+    <value>Valor Cadena</value>
+  </data>
+  <data name="CONSQLExecuteOK" xml:space="preserve">
+    <value>Ejecutar SQL</value>
+  </data>
+  <data name="CONSQLViewSendField" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="CONSQLExecuteViewValueField" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewConnectionNumberField" xml:space="preserve">
+    <value>Nro Conexion</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewDirectImportField" xml:space="preserve">
+    <value>Importacion Directa</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewProgramPathField" xml:space="preserve">
+    <value>Ruta</value>
+  </data>
+  <data name="CONIntegratorConfigurationPath" xml:space="preserve">
+    <value>Buscar ruta</value>
+  </data>
+  <data name="SECUserViewConnetionNumberField" xml:space="preserve">
+    <value>Nro Conexion</value>
+  </data>
+  <data name="SECUserViewDirectImportField" xml:space="preserve">
+    <value>Directo</value>
+  </data>
+  <data name="CONSQLViewValueField" xml:space="preserve">
+    <value>Enviar a</value>
+  </data>
+  <data name="CONSQLViewIsActiveSendField" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="CONErrorViewDocument" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="CONErrorViewVersion" xml:space="preserve">
+    <value>Conector</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewExportToField" xml:space="preserve">
+    <value>Enviar a</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewFileExtensionField" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="CONIntegratorConfigurationViewFileNameField" xml:space="preserve">
+    <value>Nombre del Archivo</value>
+  </data>
+  <data name="SECUserViewNameField" xml:space="preserve">
+    <value>Nombre Equivalencia</value>
+  </data>
+  <data name="CONEquivalenceViewLabelValue10Field" xml:space="preserve">
+    <value>Valor 10</value>
+  </data>
+  <data name="ViewCuentaContableField" xml:space="preserve">
+    <value>Cuenta</value>
+  </data>
+  <data name="ViewFormaPagoUNOEEField" xml:space="preserve">
+    <value>Forma Pago UNOE</value>
+  </data>
+  <data name="ViewFormaPagoZapaField" xml:space="preserve">
+    <value>Forma Pago Zapa</value>
+  </data>
+  <data name="ViewFPagoDet_ZapaField" xml:space="preserve">
+    <value>Forma Pago Zapa Det</value>
+  </data>
+  <data name="ViewRefFPField" xml:space="preserve">
+    <value>RefFP</value>
+  </data>
+  <data name="WSEquivalenciasFormasPagoViewCuentaContableField" xml:space="preserve">
+    <value>Cuenta:</value>
+  </data>
+  <data name="WSEquivalenciasFormasPagoViewFormaPagoUNOEEField" xml:space="preserve">
+    <value>Forma Pago UNOE:</value>
+  </data>
+  <data name="WSEquivalenciasFormasPagoViewFormaPagoZapaField" xml:space="preserve">
+    <value>Forma Pago Zapa:</value>
+  </data>
+  <data name="WSEquivalenciasFormasPagoViewFPagoDet_ZapaField" xml:space="preserve">
+    <value>Forma Pago Zapa Det:</value>
+  </data>
+  <data name="WSEquivalenciasFormasPagoViewRefFPField" xml:space="preserve">
+    <value>Referencia Forma Pago:</value>
+  </data>
+  <data name="SECUserViewCreationDateField" xml:space="preserve">
+    <value>Fecha Baja</value>
+  </data>
+  <data name="SECUserViewFechaAltaField" xml:space="preserve">
+    <value>Fecha Alta</value>
+  </data>
+  <data name="SECUserViewIdConcesionField" xml:space="preserve">
+    <value>Id Concesion</value>
+  </data>
+  <data name="SECUserViewIdTiendaField" xml:space="preserve">
+    <value>Tienda</value>
+  </data>
+  <data name="SECUserViewNickNameField" xml:space="preserve">
+    <value>NickName</value>
+  </data>
+  <data name="WSCONCESIONESTIENDAViewCreationDateField" xml:space="preserve">
+    <value>Fecha Baja</value>
+  </data>
+  <data name="WSCONCESIONESTIENDAViewFechaAltaField" xml:space="preserve">
+    <value>Fecha alta</value>
+  </data>
+  <data name="WSCONCESIONESTIENDAViewIdConcesionField" xml:space="preserve">
+    <value>Id Concesion</value>
+  </data>
+  <data name="WSCONCESIONESTIENDAViewIdTiendaField" xml:space="preserve">
+    <value>Tienda</value>
+  </data>
+  <data name="WSCONCESIONESTIENDAViewNickNameField" xml:space="preserve">
+    <value>NickName</value>
+  </data>
+  <data name="SECUserViewCifField" xml:space="preserve">
+    <value>Cif</value>
+  </data>
+  <data name="SECUserViewFechaBajaField" xml:space="preserve">
+    <value>Fecha Baja</value>
+  </data>
+  <data name="SECUserViewFechaModificacionFielSECUserViewFechaModificacionField" xml:space="preserve">
+    <value>Fecha modificacion</value>
+  </data>
+  <data name="SECUserViewNomComercialField" xml:space="preserve">
+    <value>Nombre Comercial</value>
+  </data>
+  <data name="SECUserViewRazonSocialField" xml:space="preserve">
+    <value>Razon Social</value>
+  </data>
+  <data name="SECUserViewTratamientoField" xml:space="preserve">
+    <value>Tratamiento</value>
+  </data>
+  <data name="WSCONCESIONEViewCifField" xml:space="preserve">
+    <value>Cif</value>
+  </data>
+  <data name="WSCONCESIONEViewFechaAltaField" xml:space="preserve">
+    <value>Fecha Alta</value>
+  </data>
+  <data name="WSCONCESIONEViewFechaBajaField" xml:space="preserve">
+    <value>Fecha Baja</value>
+  </data>
+  <data name="WSCONCESIONEViewIdConcesionField" xml:space="preserve">
+    <value>Id Concesion</value>
+  </data>
+  <data name="WSCONCESIONEViewNomComercialField" xml:space="preserve">
+    <value>Nombre Comercial</value>
+  </data>
+  <data name="WSCONCESIONEViewRazonSocialField" xml:space="preserve">
+    <value>Razon social</value>
+  </data>
+  <data name="WSCONCESIONEViewTratamientoField" xml:space="preserve">
+    <value>Tratamiento</value>
+  </data>
+</root>
